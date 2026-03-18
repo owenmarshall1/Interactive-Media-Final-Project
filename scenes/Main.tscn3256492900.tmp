@@ -23,4 +23,4 @@ shape = SubResource("BoxShape3D_elqb8")
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 1.4502003, 1.732824)
 
 [node name="Player" parent="." unique_id=894090680 instance=ExtResource("1_elqb8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44638264, 4.7538786, 0.50618815)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44638264, 0.6976864, 0.50618815)

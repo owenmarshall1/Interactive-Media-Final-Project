@@ -1,24 +1,16 @@
 extends CharacterBody3D
 
 @export var speed := 5.0
-@export var jump_velocity := 5.0
-@export var mouse_sensitivity := 0.002
-@export var controller_sensitivity := 3.0
+@export var controller_sensitivity := 2.0
 @export var gravity := 9.8
+@export var bullet_scene: PackedScene
+@export var shoot_cooldown := 0.3
 
 var camera_rotation := 0.0
+var can_shoot := true
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-func _unhandled_input(event):
-	# Mouse look
-	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * mouse_sensitivity)
-		
-		camera_rotation -= event.relative.y * mouse_sensitivity
-		camera_rotation = clamp(camera_rotation, -1.5, 1.5)
-		$Camera3D.rotation.x = camera_rotation
+	pass
 
 func _physics_process(delta):
 	# --- MOVEMENT INPUT (keyboard + controller) ---
@@ -42,22 +34,46 @@ func _physics_process(delta):
 	else:
 		velocity.y = 0
 
-	# --- JUMP ---
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
-
 	# --- CONTROLLER CAMERA ---
 	var look_input = Vector2.ZERO
 	look_input.x = Input.get_action_strength("look_right") - Input.get_action_strength("look_left")
-	look_input.y = Input.get_action_strength("look_down") - Input.get_action_strength("look_up")
+	#look_input.y = Input.get_action_strength("look_down") - Input.get_action_strength("look_up")
 
 	# Horizontal rotation (player)
 	rotate_y(-look_input.x * controller_sensitivity * delta)
+	
+	# --- SHOOT ---
+	if Input.is_action_just_pressed("shoot") and can_shoot:
+		shoot()
 
 	# Vertical rotation (camera)
 	camera_rotation -= look_input.y * controller_sensitivity * delta
 	camera_rotation = clamp(camera_rotation, -1.5, 1.5)
-	$Camera3D.rotation.x = camera_rotation
+	$CameraPivot/Camera3D.rotation.x = camera_rotation
 
 	# --- MOVE ---
 	move_and_slide()
+	
+func shoot():
+	can_shoot = false
+	var bullet = bullet_scene.instantiate()
+	
+	#spawn
+	var spawn_pos = global_transform.origin + -transform.basis.z * 1.5 + Vector3.UP * 1.0
+	bullet.global_transform.origin = spawn_pos
+	
+	bullet.direction = -transform.basis.z
+	
+	get_tree().current_scene.add_child(bullet)
+	
+	await get_tree().create_timer(shoot_cooldown).timeout
+	can_shoot = true
+	
+	
+	
+	
+	
+	
+	
+	
+	
