@@ -1,8 +1,8 @@
+# Bullet.gd
 extends CharacterBody3D
 
 @export var speed := 20.0
 @export var lifetime := 2.0
-
 var direction := Vector3.ZERO
 
 func _ready():
@@ -12,7 +12,5 @@ func _ready():
 func _physics_process(delta):
 	velocity = direction * speed
 	move_and_slide()
-
-	# Optional: destroy on collision
 	if get_slide_collision_count() > 0:
 		queue_free()

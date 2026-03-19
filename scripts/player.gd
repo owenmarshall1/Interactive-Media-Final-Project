@@ -1,3 +1,4 @@
+# Player.gd
 extends CharacterBody3D
 
 @export var speed := 5.0
@@ -6,74 +7,64 @@ extends CharacterBody3D
 @export var bullet_scene: PackedScene
 @export var shoot_cooldown := 0.3
 
+@onready var camera = $CameraPivot/Camera3D
+var camera_clamp := 0.25  # max vertical tilt in radians
+
 var camera_rotation := 0.0
-var can_shoot := true
+var can_shoot := false
 
 func _ready():
-	pass
+	can_shoot = true  # Shooting now allowed
 
 func _physics_process(delta):
-	# --- MOVEMENT INPUT (keyboard + controller) ---
+	# --- Movement Input ---
 	var input_dir = Vector2.ZERO
 	input_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_dir.y = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 
 	var input_strength = input_dir.length()
-	input_dir = input_dir.normalized()
+	if input_strength > 0:
+		input_dir = input_dir.normalized()
 
-	# Convert to 3D direction relative to player
-	var direction = (transform.basis.x * input_dir.x + transform.basis.z * input_dir.y)
-
-	# Apply movement (with analog speed)
+	var direction = transform.basis.x * input_dir.x + transform.basis.z * input_dir.y
 	velocity.x = direction.x * speed * input_strength
 	velocity.z = direction.z * speed * input_strength
 
-	# --- GRAVITY ---
+	# --- Gravity ---
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	else:
 		velocity.y = 0
 
-	# --- CONTROLLER CAMERA ---
-	var look_input = Vector2.ZERO
-	look_input.x = Input.get_action_strength("look_right") - Input.get_action_strength("look_left")
-	#look_input.y = Input.get_action_strength("look_down") - Input.get_action_strength("look_up")
+	# --- Controller Horizontal Look ---
+	var look_input_x = Input.get_action_strength("look_right") - Input.get_action_strength("look_left")
+	rotate_y(-look_input_x * controller_sensitivity * delta)
 
-	# Horizontal rotation (player)
-	rotate_y(-look_input.x * controller_sensitivity * delta)
-	
-	# --- SHOOT ---
-	if Input.is_action_just_pressed("shoot") and can_shoot:
+	# --- Vertical Camera Look ---
+	var look_input_y = Input.get_action_strength("look_down") - Input.get_action_strength("look_up")
+	camera_rotation -= look_input_y * controller_sensitivity/4 * delta
+	camera_rotation = clamp(camera_rotation, -camera_clamp, camera_clamp)
+	camera.rotation.x = camera_rotation
+
+	# --- Shoot ---
+	if can_shoot and Input.is_action_just_pressed("shoot"):
 		shoot()
 
-	# Vertical rotation (camera)
-	camera_rotation -= look_input.y * controller_sensitivity * delta
-	camera_rotation = clamp(camera_rotation, -1.5, 1.5)
-	$CameraPivot/Camera3D.rotation.x = camera_rotation
-
-	# --- MOVE ---
+	# --- Move ---
 	move_and_slide()
-	
+
 func shoot():
+	if not is_inside_tree():
+		return
+
 	can_shoot = false
+
 	var bullet = bullet_scene.instantiate()
-	
-	#spawn
-	var spawn_pos = global_transform.origin + -transform.basis.z * 1.5 + Vector3.UP * 1.0
-	bullet.global_transform.origin = spawn_pos
-	
+	bullet.global_transform.origin = global_transform.origin + -transform.basis.z * 1.5 + Vector3.UP * 1.0
 	bullet.direction = -transform.basis.z
-	
-	get_tree().current_scene.add_child(bullet)
-	
+
+	# Always add to parent (Main scene)
+	get_parent().add_child(bullet)
+
 	await get_tree().create_timer(shoot_cooldown).timeout
 	can_shoot = true
-	
-	
-	
-	
-	
-	
-	
-	
-	
