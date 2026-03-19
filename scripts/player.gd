@@ -7,8 +7,11 @@ extends CharacterBody3D
 @export var bullet_scene: PackedScene
 @export var shoot_cooldown := 0.3
 
+@onready var hud = get_tree().current_scene.get_node("HUD")
+@onready var messagebox = get_tree().current_scene.get_node("HUD/Messagebox")
+
 @onready var camera = $CameraPivot/Camera3D
-var camera_clamp := 0.25  # max vertical tilt in radians
+var camera_clamp := 0.20  # max vertical tilt in radians
 
 var camera_rotation := 0.0
 var can_shoot := false
@@ -47,15 +50,16 @@ func _physics_process(delta):
 	camera.rotation.x = camera_rotation
 
 	# --- Shoot ---
-	if can_shoot and Input.is_action_just_pressed("shoot"):
+	if can_shoot and is_inside_tree() and Input.is_action_just_pressed("shoot"):
 		shoot()
 
 	# --- Move ---
 	move_and_slide()
-
+	
+	if Input.is_action_just_pressed("relight"):
+		messagebox.show_message("Light another one?")
+		
 func shoot():
-	if not is_inside_tree():
-		return
 
 	can_shoot = false
 
@@ -63,7 +67,6 @@ func shoot():
 	bullet.global_transform.origin = global_transform.origin + -transform.basis.z * 1.5 + Vector3.UP * 1.0
 	bullet.direction = -transform.basis.z
 
-	# Always add to parent (Main scene)
 	get_parent().add_child(bullet)
 
 	await get_tree().create_timer(shoot_cooldown).timeout

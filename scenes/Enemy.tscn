@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d2t17spj8ervx"]
+
+[ext_resource type="Texture2D" uid="uid://bd00ff6a6dhqb" path="res://assets/eyes.jpg" id="1_3gvst"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_55jtl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpr68"]
+albedo_texture = ExtResource("1_3gvst")
+backlight = Color(1, 1, 1, 1)
+refraction_scale = 0.98
+refraction_texture = ExtResource("1_3gvst")
+uv1_scale = Vector3(3, 3, 5)
+uv1_offset = Vector3(3, 0, 0)
+billboard_mode = 2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ft8do"]
+material = SubResource("StandardMaterial3D_mpr68")
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1988293381]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2134707625]
+shape = SubResource("CapsuleShape3D_55jtl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=183616543]
+mesh = SubResource("CapsuleMesh_ft8do")

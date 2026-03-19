@@ -1,7 +1,7 @@
 # Bullet.gd
 extends CharacterBody3D
 
-@export var speed := 20.0
+@export var speed := 100.0
 @export var lifetime := 2.0
 var direction := Vector3.ZERO
 
