@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var controller_sensitivity := 2.0
 @export var gravity := 9.8
 @export var bullet_scene: PackedScene
-@export var shoot_cooldown := 0.3
+@export var shoot_cooldown := 0.7
 
 @onready var camera = $Camera3D
 var camera_clamp := 0.20  # max vertical tilt in radians
@@ -52,13 +52,18 @@ func _physics_process(delta):
 
 	# --- Move ---
 	move_and_slide()
+	
 func shoot():
-
 	can_shoot = false
 
 	var bullet = bullet_scene.instantiate()
 	bullet.global_transform.origin = global_transform.origin + -transform.basis.z * 1.5 + Vector3.UP * 1.0
-	bullet.direction = -transform.basis.z
+
+	# Get horizontal direction only
+	var direction = -transform.basis.z
+	direction.y = 0
+	direction = direction.normalized()
+	bullet.direction = direction
 
 	get_parent().add_child(bullet)
 

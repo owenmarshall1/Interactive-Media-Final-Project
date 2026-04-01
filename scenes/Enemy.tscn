@@ -3,8 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bd00ff6a6dhqb" path="res://assets/eyes.jpg" id="1_3gvst"]
 [ext_resource type="Script" uid="uid://dylmn8hukh6iy" path="res://scripts/enemy.gd" id="1_55jtl"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_55jtl"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpr68"]
 albedo_texture = ExtResource("1_3gvst")
 backlight = Color(1, 1, 1, 1)
@@ -17,13 +15,27 @@ billboard_mode = 2
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ft8do"]
 material = SubResource("StandardMaterial3D_mpr68")
 
-[node name="Enemy" type="CharacterBody3D" unique_id=1988293381]
-script = ExtResource("1_55jtl")
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_55jtl"]
+radius = 0.3701172
+height = 1.7861328
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2134707625]
-shape = SubResource("CapsuleShape3D_55jtl")
+[sub_resource type="SphereShape3D" id="SphereShape3D_55jtl"]
+radius = 15.0
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1988293381]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.1775372, 0)
+script = ExtResource("1_55jtl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=183616543]
 mesh = SubResource("CapsuleMesh_ft8do")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=799303723]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2134707625]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106933594, 0)
+shape = SubResource("CapsuleShape3D_55jtl")
+
+[node name="DetectionArea" type="Area3D" parent="." unique_id=420336172]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=86213042]
+shape = SubResource("SphereShape3D_55jtl")
