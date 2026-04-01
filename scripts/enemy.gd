@@ -2,8 +2,9 @@ extends CharacterBody3D
 
 var player = null
 const SPEED = 3.0
-var health = 50.0
+var health = 60.0
 var player_in_range = false
+
 
 @export var player_path : NodePath
 @onready var nav_agent = $NavigationAgent3D
@@ -15,12 +16,7 @@ func _ready() -> void:
 	detection_area.body_entered.connect(_on_body_entered)
 	detection_area.body_exited.connect(_on_body_exited)
 	
-func _physics_process(delta: float) -> void:
-	velocity = Vector3.ZERO
-	
-	if not is_on_floor():
-		velocity.y -= 9.8 * delta
-		
+func _physics_process(delta: float) -> void:	
 	if player_in_range:
 		nav_agent.set_target_position(player.global_position)
 		var next_nav_point = nav_agent.get_next_path_position()
@@ -34,6 +30,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damage):
 	health -= damage
+	print(health)
 	
 func _on_body_entered(body: Node) -> void:
 	if body == player:

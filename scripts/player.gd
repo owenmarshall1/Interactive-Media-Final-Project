@@ -4,8 +4,10 @@ extends CharacterBody3D
 @export var speed := 5.0
 @export var controller_sensitivity := 2.0
 @export var gravity := 9.8
+
 @export var bullet_scene: PackedScene
 @export var shoot_cooldown := 0.7
+var ammo = 12
 
 @onready var camera = $Camera3D
 var camera_clamp := 0.20  # max vertical tilt in radians
@@ -14,7 +16,7 @@ var camera_rotation := 0.0
 var can_shoot := false
 
 func _ready():
-	can_shoot = true  # Shooting now allowed
+	can_shoot = true  
 
 func _physics_process(delta):
 	# --- Movement Input ---
@@ -47,13 +49,14 @@ func _physics_process(delta):
 	camera.rotation.x = camera_rotation
 
 	# --- Shoot ---
-	if can_shoot and is_inside_tree() and Input.is_action_just_pressed("shoot"):
+	if can_shoot and is_inside_tree() and Input.is_action_just_pressed("shoot") and ammo > 0:
 		shoot()
 
 	# --- Move ---
 	move_and_slide()
 	
 func shoot():
+	ammo-=1
 	can_shoot = false
 
 	var bullet = bullet_scene.instantiate()

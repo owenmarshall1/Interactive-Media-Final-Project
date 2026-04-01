@@ -1,22 +1,22 @@
-# Bullet.gd
 extends CharacterBody3D
 
-@export var speed := 100.0
+@export var speed := 40.0
 @export var lifetime := 2.0
 var direction := Vector3.ZERO
 
 func _ready():
 	await get_tree().create_timer(lifetime).timeout
-	queue_free()
+	if is_instance_valid(self):
+		queue_free()
 
 func _physics_process(delta):
 	velocity = direction * speed
 	move_and_slide()
-	if get_slide_collision_count() > 0:
-		queue_free()
-		
-func _on_body_entered(body):
-	if body.has_method("take_damage"):
-		body.take_damage(10)
 
-	queue_free()
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var body = collision.get_collider()
+		if body and body.has_method("take_damage"):
+			body.take_damage(10)
+		queue_free()
+		return

@@ -38,6 +38,8 @@ emission = Color(1, 1, 1, 1)
 backlight = Color(0.9384497, 0.9384497, 0.9384497, 1)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_mskxn"]
+vertices = PackedVector3Array(-37.13034, -3.2411945, 20.837252, -39.38034, -3.2411945, 21.087252, -38.13034, -3.2411945, 37.33725, -22.13034, -3.2411945, 35.33725, 22.11966, -3.2411945, -10.662748, 22.11966, -3.2411945, -11.162748, 7.1196594, -3.2411945, -25.412748, -61.63034, -3.2411945, 40.83725, -62.13034, -3.2411945, 24.337252, -64.13034, -3.2411945, 24.337252, -64.13034, -3.2411945, 41.33725, -181.63034, -3.2411945, 11.587252, -64.13034, -3.2411945, 11.587252, -181.63034, -3.2411945, 107.33725, -64.13034, -3.2411945, 107.33725)
+polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(0, 3, 2), PackedInt32Array(9, 8, 7), PackedInt32Array(7, 10, 9), PackedInt32Array(9, 10, 11), PackedInt32Array(11, 12, 9), PackedInt32Array(14, 13, 10), PackedInt32Array(10, 13, 11), PackedInt32Array(1, 2, 8), PackedInt32Array(8, 2, 7)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5osry"]
 albedo_texture = ExtResource("1_q6ro2")
@@ -47,13 +49,13 @@ uv2_triplanar = true
 [node name="Graveyard" type="Node3D" unique_id=2063104567]
 
 [node name="Player" parent="." unique_id=894090680 instance=ExtResource("1_5r8i4")]
-transform = Transform3D(-0.7128835, 0, 0.70128256, 0, 1, 0, -0.70128256, 0, -0.7128835, 78.01268, 1.2207565, -82.832016)
+transform = Transform3D(-0.7128835, 0, 0.70128256, 0, 1, 0, -0.70128256, 0, -0.7128835, 12.918449, 1.2207565, -14.70594)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1245450380]
 environment = SubResource("Environment_q6ro2")
 
 [node name="Enemy" parent="." unique_id=1988293381 instance=ExtResource("4_mskxn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3011436, 1.3397534, -2.1273937)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3011436, 1.6842723, -2.1273937)
 player_path = NodePath("../Player")
 
 [node name="Moon" type="CSGSphere3D" parent="." unique_id=254710705]
@@ -73,9 +75,9 @@ navigation_mesh = SubResource("NavigationMesh_mskxn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18730688, -3.7311945, 0.19650364)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Map" unique_id=1888354062]
-transform = Transform3D(0.6934019, 0, 0.7205512, 0, 1.0000001, 0, -0.7205512, 0, 0.6934019, 29.017021, 0, -33.0146)
+transform = Transform3D(0.6934019, 0, 0.7205512, 0, 1.0000001, 0, -0.7205512, 0, 0.6934019, -7.2538342, 0, 4.6763983)
 use_collision = true
-size = Vector3(169.38269, 0.02, 21.494598)
+size = Vector3(64.765564, 0.02, 21.494598)
 material = SubResource("StandardMaterial3D_5osry")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/Map" unique_id=850189082]
@@ -85,9 +87,9 @@ size = Vector3(42.187958, 0.001, 17.06152)
 material = SubResource("StandardMaterial3D_5osry")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/Map" unique_id=976501327]
-transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -122.76667, 0, 65.815)
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -122.76667, 0, 59.357716)
 use_collision = true
-size = Vector3(118.35275, 0.001, 83.60445)
+size = Vector3(118.35275, 0.001, 96.51902)
 material = SubResource("StandardMaterial3D_5osry")
 
 [node name="HUD" parent="." unique_id=675890851 instance=ExtResource("5_x4r7r")]

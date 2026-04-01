@@ -16,26 +16,30 @@ billboard_mode = 2
 material = SubResource("StandardMaterial3D_mpr68")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_55jtl"]
-radius = 0.3701172
-height = 1.7861328
+radius = 0.55566406
+height = 2.2753906
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_55jtl"]
 radius = 15.0
 
 [node name="Enemy" type="CharacterBody3D" unique_id=1988293381]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.1775372, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1775372, 0)
 script = ExtResource("1_55jtl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=183616543]
 mesh = SubResource("CapsuleMesh_ft8do")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=799303723]
+path_height_offset = -1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2134707625]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106933594, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.013671875, 0)
 shape = SubResource("CapsuleShape3D_55jtl")
 
 [node name="DetectionArea" type="Area3D" parent="." unique_id=420336172]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=86213042]
 shape = SubResource("SphereShape3D_55jtl")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_body_exited"]
