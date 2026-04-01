@@ -3,12 +3,15 @@ extends CanvasLayer
 @export var max_cig_time := 180.0
 var cig_time := 180.0
 
+@export var player : Node
+
 @onready var messagebox = $Messagebox
 
 @onready var cig := $CigaretteBarContainer/CigMask
 @onready var burn_tip := $CigaretteBarContainer/BurnTip
 @onready var smoke = $CigaretteBarContainer/Smoke
 @onready var cig_counter = $CigaretteBarContainer/CigCounter
+@onready var ammo_count = $AmmoCount
 
 var cig_count := 3
 var cig_full_width := 0.0
@@ -49,6 +52,8 @@ func _process(delta):
 			messagebox.confirmed.connect(relight_cig, CONNECT_ONE_SHOT)
 		else:
 			messagebox.show_message("It looks like i'm out of cigarettes.")
+			
+	ammo_count.text = str(player.ammo)
 		
 	
 func take_damage(amount):

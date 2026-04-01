@@ -1,7 +1,9 @@
 extends VBoxContainer
 
 const GRAVEYARD = preload("res://scenes/Graveyard.tscn")
-
+func _ready():
+	$start.grab_focus()
+	
 func _on_start_button_pressed():
 	get_tree().change_scene_to_packed(GRAVEYARD)
 	

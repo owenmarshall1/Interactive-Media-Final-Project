@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 var player = null
 const SPEED = 3.0
-var health = 60.0
+var health = 50.0
 var player_in_range = false
 
 
