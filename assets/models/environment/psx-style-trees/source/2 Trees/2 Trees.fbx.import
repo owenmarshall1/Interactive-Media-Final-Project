@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bfaqlqpn21dcg"
-path="res://.godot/imported/fence.fbx-e1a0c85b08360c7dd1c7423821b2c3c9.scn"
+uid="uid://bkxu8oj28msg2"
+path="res://.godot/imported/2 Trees.fbx-8219d1fdef0e42db867ec3badd66bbf5.scn"
 
 [deps]
 
-source_file="res://assets/models/environment/fence.fbx"
-dest_files=["res://.godot/imported/fence.fbx-e1a0c85b08360c7dd1c7423821b2c3c9.scn"]
+source_file="res://assets/models/environment/psx-style-trees/source/2 Trees/2 Trees.fbx"
+dest_files=["res://.godot/imported/2 Trees.fbx-8219d1fdef0e42db867ec3badd66bbf5.scn"]
 
 [params]
 

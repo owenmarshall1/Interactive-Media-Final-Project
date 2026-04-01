@@ -60,7 +60,7 @@ func shoot():
 	can_shoot = false
 
 	var bullet = bullet_scene.instantiate()
-	bullet.global_transform.origin = global_transform.origin + -transform.basis.z * 1.5 + Vector3.UP * 1.0
+	bullet.global_transform.origin = global_transform.origin + -transform.basis.z * 1.5 + Vector3.UP * 0.2
 
 	# Get horizontal direction only
 	var direction = -transform.basis.z

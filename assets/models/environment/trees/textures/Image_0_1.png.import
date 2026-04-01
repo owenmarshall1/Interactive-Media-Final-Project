@@ -2,24 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc0dnkg2vwbi5"
-path.s3tc="res://.godot/imported/fence_0.png-846abae0bb4fe7f149e79f8c99d34834.s3tc.ctex"
+uid="uid://c8hngkd7itt8k"
+path="res://.godot/imported/Image_0_1.png-dfd30b82b69587634dd372bf852a509f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
-generator_parameters={
-"md5": "0a875c5d7c662125a882de03c0daed7e"
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/models/environment/fence_0.png"
-dest_files=["res://.godot/imported/fence_0.png-846abae0bb4fe7f149e79f8c99d34834.s3tc.ctex"]
+source_file="res://assets/models/environment/trees/textures/Image_0_1.png"
+dest_files=["res://.godot/imported/Image_0_1.png-dfd30b82b69587634dd372bf852a509f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -27,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -41,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
