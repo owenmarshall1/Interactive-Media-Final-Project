@@ -4,7 +4,7 @@ extends CanvasLayer
 var current_health := 100
 
 @export var max_cig_time := 180.0
-var cig_time := 180.0
+var cig_time := 2.0
 
 @onready var messagebox = $Messagebox
 
@@ -12,9 +12,11 @@ var cig_time := 180.0
 @onready var cig := $CigaretteBarContainer/CigMask
 @onready var burn_tip := $CigaretteBarContainer/BurnTip
 @onready var smoke = $CigaretteBarContainer/Smoke
+@onready var cig_counter = $CigaretteBarContainer/CigCounter
 
 
 var health_bar_full_width := 0.0
+var cig_count := 3
 var cig_full_width := 0.0
 var cig_is_empty := false
 
@@ -22,6 +24,7 @@ func _ready():
 	# Store full widths for scaling
 	health_bar_full_width = health_bar.size.x
 	cig_full_width = cig.size.x
+	
 
 func _process(delta):
 	# --- Health bar ---
@@ -29,6 +32,7 @@ func _process(delta):
 	health_bar.size.x = health_bar_full_width * health_percent
 
 	# --- Cigarette timer ---
+	cig_counter.text = str(cig_count)
 	cig_time -= delta
 	cig_time = clamp(cig_time, 0, max_cig_time)
 	var percent = cig_time / max_cig_time
@@ -49,11 +53,20 @@ func _process(delta):
 	if cig_time <= 0 and not cig_is_empty:
 		cig_is_empty = true
 		messagebox.show_message("My cigarette ran out.")
+		
+	if Input.is_action_just_pressed("relight"):
+		if cig_count > 0:
+			messagebox.show_option("Light another one?")
+			messagebox.confirmed.connect(relight_cig, CONNECT_ONE_SHOT)
+		else:
+			messagebox.show_message("It looks like i'm out of cigarettes.")
+		
 	
 func take_damage(amount):
 	current_health = clamp(current_health - amount, 0, max_health)
 
-func relight_cig():
-	cig_time = max_cig_time
-	await get_tree().create_timer(0.5).timeout
-	smoke.visible = true
+func relight_cig(result: bool):
+	if result:
+		cig_time = max_cig_time
+		smoke.visible = true
+		cig_count-=1

@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://cq2l3g8d3wkts"]
+
+[ext_resource type="PackedScene" uid="uid://disx0ku6uxok6" path="res://scenes/Player.tscn" id="1_5r8i4"]
+[ext_resource type="Texture2D" uid="uid://d37ah5ys5rdx" path="res://assets/grass.jpg" id="1_q6ro2"]
+[ext_resource type="Texture2D" uid="uid://cav4a6nigdm83" path="res://assets/moon.jpg" id="2_5osry"]
+[ext_resource type="PackedScene" uid="uid://d2t17spj8ervx" path="res://scenes/Enemy.tscn" id="4_mskxn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5osry"]
+albedo_texture = ExtResource("1_q6ro2")
+uv1_triplanar = true
+uv2_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6ro2"]
+albedo_texture = ExtResource("2_5osry")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+backlight = Color(0.9384497, 0.9384497, 0.9384497, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q6ro2"]
+sky_top_color = Color(0.058672562, 7.314069e-05, 0.14562559, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_curve = 0.08615198
+sky_energy_multiplier = 1.62
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+sun_angle_max = 0.0
+use_debanding = false
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_mskxn"]
+sky_material = SubResource("ProceduralSkyMaterial_q6ro2")
+
+[sub_resource type="Environment" id="Environment_q6ro2"]
+background_mode = 2
+sky = SubResource("Sky_mskxn")
+fog_light_color = Color(0.106357954, 0.119706444, 0.1404773, 1)
+fog_sky_affect = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.04
+volumetric_fog_albedo = Color(0.088810496, 0.06429659, 0.108177505, 1)
+volumetric_fog_emission = Color(0.11939367, 0.10946884, 0.09954437, 1)
+volumetric_fog_sky_affect = 0.75
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_mskxn"]
+
+[node name="Graveyard" type="Node3D" unique_id=2063104567]
+
+[node name="Map" type="Node3D" parent="." unique_id=1314196626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18730688, -0.15128708, 0.19650364)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map" unique_id=1888354062]
+transform = Transform3D(0.6934019, 0, 0.7205512, 0, 1.0000001, 0, -0.7205512, 0, 0.6934019, -2.831771, 0, 0.08119345)
+use_collision = true
+size = Vector3(77.52025, 0.02, 21.494598)
+material = SubResource("StandardMaterial3D_5osry")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map" unique_id=850189082]
+transform = Transform3D(0.990268, 0, 0.13917309, 0, 0.9999998, 0, -0.13917309, 0, 0.99026793, -43.95314, 0, 29.868313)
+use_collision = true
+size = Vector3(42.187958, 0.001, 17.051739)
+material = SubResource("StandardMaterial3D_5osry")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map" unique_id=976501327]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -126.57, 0, 65.815)
+use_collision = true
+size = Vector3(125.95941, 0.001, 83.60445)
+material = SubResource("StandardMaterial3D_5osry")
+metadata/_edit_lock_ = true
+
+[node name="Moon" type="CSGSphere3D" parent="Map" unique_id=254710705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -383.607, 231.6602, 172.47617)
+cast_shadow = 0
+radius = 20.0
+material = SubResource("StandardMaterial3D_q6ro2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map/Moon" unique_id=2035426879]
+transform = Transform3D(0.24038714, 0.65627867, -0.71520096, -0.19592917, 0.7544461, 0.62643665, 0.9506976, -0.01045858, 0.3099433, 3.3982239, 1.5297089, -0.72969055)
+
+[node name="Player" parent="." unique_id=894090680 instance=ExtResource("1_5r8i4")]
+transform = Transform3D(-0.7128835, 0, 0.70128256, 0, 1, 0, -0.70128256, 0, -0.7128835, 20.933752, 1.2207584, -24.502232)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1245450380]
+environment = SubResource("Environment_q6ro2")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=625211722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5546031, 0)
+navigation_mesh = SubResource("NavigationMesh_mskxn")
+
+[node name="Enemy" parent="NavigationRegion3D" unique_id=1988293381 instance=ExtResource("4_mskxn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6425468, 0)
+player_path = NodePath("../../Player")

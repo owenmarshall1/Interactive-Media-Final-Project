@@ -7,10 +7,7 @@ extends CharacterBody3D
 @export var bullet_scene: PackedScene
 @export var shoot_cooldown := 0.3
 
-@onready var hud = get_tree().current_scene.get_node("HUD")
-@onready var messagebox = get_tree().current_scene.get_node("HUD/Messagebox")
-
-@onready var camera = $CameraPivot/Camera3D
+@onready var camera = $Camera3D
 var camera_clamp := 0.20  # max vertical tilt in radians
 
 var camera_rotation := 0.0
@@ -55,10 +52,6 @@ func _physics_process(delta):
 
 	# --- Move ---
 	move_and_slide()
-	
-	if Input.is_action_just_pressed("relight"):
-		messagebox.show_message("Light another one?")
-		
 func shoot():
 
 	can_shoot = false

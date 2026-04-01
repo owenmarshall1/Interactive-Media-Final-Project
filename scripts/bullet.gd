@@ -14,3 +14,9 @@ func _physics_process(delta):
 	move_and_slide()
 	if get_slide_collision_count() > 0:
 		queue_free()
+		
+func _on_body_entered(body):
+	if body.has_method("take_damage"):
+		body.take_damage(10)
+
+	queue_free()

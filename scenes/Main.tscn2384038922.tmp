@@ -35,7 +35,7 @@ shape = SubResource("BoxShape3D_elqb8")
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 10.80018, 5.582452, -9.197323)
 
 [node name="Player" parent="." unique_id=894090680 instance=ExtResource("1_elqb8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44638264, 1.7397189, 0.50618815)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44638264, 4.7538786, 0.50618815)
 
 [node name="Shader" type="CanvasLayer" parent="." unique_id=184422939]
 
@@ -48,8 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Enemy" parent="." unique_id=1988293381 instance=ExtResource("3_0bbpv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.415243, 1.3272247, 1.2368894)
-player_path = NodePath("../Player")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.415243, 2.3642344, 1.2368894)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1489620400]
 script = ExtResource("4_rarhs")
