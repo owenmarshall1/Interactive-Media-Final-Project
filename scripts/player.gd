@@ -6,8 +6,8 @@ extends CharacterBody3D
 @export var gravity := 9.8
 
 @export var bullet_scene: PackedScene
-@export var shoot_cooldown := 0.7
-@onready var ammo = 12
+@export var shoot_cooldown := 0.8
+@onready var ammo = 0
 
 @onready var camera = $SpringArm3D/Camera3D
 

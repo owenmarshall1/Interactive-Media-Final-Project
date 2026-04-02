@@ -12,17 +12,25 @@ var cig_time := 60.0
 @onready var smoke = $CigaretteBarContainer/Smoke
 @onready var cig_counter = $CigaretteBarContainer/CigCounter
 @onready var ammo_count = $AmmoCount
+@onready var pause_menu = $PauseMenu
 
 var cig_count := 0
 var cig_full_width := 0.0
 var cig_is_empty := false
 
+
 func _ready():
 	# Store full widths for scaling
+	pause_menu.visible = false
 	cig_full_width = cig.size.x
 	
 
 func _process(delta):
+	#--- Pause Menu --- 
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = true
+		pause_menu.visible = true
+		$PauseMenu/Buttons/Resume.grab_focus()
 	# --- Cigarette timer ---
 	cig_counter.text = str(cig_count)
 	cig_time -= delta

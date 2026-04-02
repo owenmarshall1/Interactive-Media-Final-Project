@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bstxmx8hoy5cq" path="res://assets/sounds/capaholiczsfx-forest-soundscape-night-time-403609.mp3" id="3_p22em"]
 [ext_resource type="PackedScene" uid="uid://d06iaa88t6bax" path="res://scenes/HUD.tscn" id="4_su4qm"]
 [ext_resource type="PackedScene" uid="uid://b1g6316yxjmga" path="res://scenes/Player.tscn" id="5_su4qm"]
-[ext_resource type="Texture2D" uid="uid://lm27h7g788h3" path="res://assets/models/o_meshes_Texturelabs_Wood_189S.jpg" id="6_4uceq"]
+[ext_resource type="Texture2D" path="res://assets/models/o_meshes_Texturelabs_Wood_189S.jpg" id="6_4uceq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_su4qm"]
 sky_top_color = Color(0.058672562, 7.314069e-05, 0.14562559, 1)
