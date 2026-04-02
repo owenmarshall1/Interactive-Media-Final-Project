@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://bp1vs8xivegqu"]
 
-[ext_resource type="Texture2D" uid="uid://d37ah5ys5rdx" path="res://assets/textures/grass.jpg" id="1_rl6in"]
 [ext_resource type="Texture2D" uid="uid://cav4a6nigdm83" path="res://assets/textures/moon.jpg" id="2_qn3ms"]
 [ext_resource type="AudioStream" uid="uid://bstxmx8hoy5cq" path="res://assets/sounds/capaholiczsfx-forest-soundscape-night-time-403609.mp3" id="3_p22em"]
+[ext_resource type="PackedScene" uid="uid://dgv6ln0hwdb2k" path="res://scenes/Game/PauseMenu.tscn" id="4_dutki"]
 [ext_resource type="PackedScene" uid="uid://d06iaa88t6bax" path="res://scenes/HUD.tscn" id="4_su4qm"]
+[ext_resource type="PackedScene" uid="uid://c43aprpo2gvnm" path="res://scenes/Game/Messagebox.tscn" id="5_fmhb6"]
 [ext_resource type="PackedScene" uid="uid://b1g6316yxjmga" path="res://scenes/Player.tscn" id="5_su4qm"]
-[ext_resource type="Texture2D" path="res://assets/models/o_meshes_Texturelabs_Wood_189S.jpg" id="6_4uceq"]
+[ext_resource type="Texture2D" uid="uid://lm27h7g788h3" path="res://assets/textures/o_meshes_Texturelabs_Wood_189S.jpg" id="6_4uceq"]
+[ext_resource type="Texture2D" uid="uid://d37ah5ys5rdx" path="res://assets/textures/grass.jpg" id="7_fmhb6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_su4qm"]
 sky_top_color = Color(0.058672562, 7.314069e-05, 0.14562559, 1)
@@ -43,25 +45,26 @@ uv1_triplanar_sharpness = 0.00043364873
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4uceq"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p22em"]
-albedo_texture = ExtResource("1_rl6in")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a08s"]
+albedo_texture = ExtResource("7_fmhb6")
 uv1_triplanar = true
-uv2_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_heru0"]
 albedo_texture = ExtResource("6_4uceq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmhb6"]
-albedo_texture = ExtResource("6_4uceq")
-uv1_scale = Vector3(11, 11, 11)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4uceq"]
-albedo_texture = ExtResource("6_4uceq")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a08s"]
-albedo_texture = ExtResource("6_4uceq")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3e3wv"]
+albedo_texture = ExtResource("6_4uceq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lc5yc"]
+albedo_texture = ExtResource("6_4uceq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckgpg"]
+albedo_texture = ExtResource("6_4uceq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v1vex"]
+albedo_texture = ExtResource("6_4uceq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpxj2"]
 albedo_texture = ExtResource("6_4uceq")
 
 [node name="Node3D" type="Node3D" unique_id=1221666833]
@@ -93,8 +96,12 @@ parameters/looping = true
 [node name="HUD" parent="." unique_id=675890851 node_paths=PackedStringArray("player") instance=ExtResource("4_su4qm")]
 player = NodePath("../Player")
 
+[node name="PauseMenu" parent="HUD" unique_id=1590541772 instance=ExtResource("4_dutki")]
+
+[node name="Messagebox2" parent="HUD" unique_id=804070227 instance=ExtResource("5_fmhb6")]
+
 [node name="Player" parent="." unique_id=894090680 instance=ExtResource("5_su4qm")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -18.150366, 2.7351213, -7.173791)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -17.09844, 2.7351213, -2.5229902)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1871238060]
 navigation_mesh = SubResource("NavigationMesh_4uceq")
@@ -103,7 +110,7 @@ navigation_mesh = SubResource("NavigationMesh_4uceq")
 transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -58.50089, 0, 40.23088)
 use_collision = true
 size = Vector3(175.07019, 0.001, 134.77269)
-material = SubResource("StandardMaterial3D_p22em")
+material = SubResource("StandardMaterial3D_5a08s")
 metadata/_edit_lock_ = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=278952658]
@@ -115,26 +122,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5485115, 2.8803227, -10.733
 material_override = SubResource("StandardMaterial3D_heru0")
 use_collision = true
 size = Vector3(33.492798, 9.942383, 20.043884)
-material = SubResource("StandardMaterial3D_fmhb6")
+material = SubResource("StandardMaterial3D_3e3wv")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=613435156]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5359546, 1.8472762, -1.3692355)
 operation = 2
 size = Vector3(3.069336, 5.538574, 1.5380859)
-material = SubResource("StandardMaterial3D_4uceq")
+material = SubResource("StandardMaterial3D_lc5yc")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=198228255]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1001487, 2.9997375, -10.39811)
 operation = 2
 size = Vector3(28.232853, 7.846596, 16.520752)
-material = SubResource("StandardMaterial3D_5a08s")
+material = SubResource("StandardMaterial3D_ckgpg")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=23432777]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5814209, -1.6061413, -0.31676233)
 size = Vector3(3.1193848, 0.9351349, 1)
-material = SubResource("StandardMaterial3D_3e3wv")
+material = SubResource("StandardMaterial3D_v1vex")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1276015257]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5814209, -1.7223599, 0.48569882)
 size = Vector3(3.1193848, 0.70269775, 1)
-material = SubResource("StandardMaterial3D_3e3wv")
+material = SubResource("StandardMaterial3D_tpxj2")

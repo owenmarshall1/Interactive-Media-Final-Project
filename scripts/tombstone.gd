@@ -3,15 +3,27 @@ extends Node3D
 @export var player: Node3D
 @export var messagebox: CanvasLayer
 @export var puzzle_tombstone = false
+@export var MAP: Node3D
+
+@onready var click : AudioStreamPlayer3D
 
 var in_contact := false
 var can_interact := true
+var click_count := 0
 
 func _ready() -> void:
-	pass
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	if puzzle_tombstone:
+		click = AudioStreamPlayer3D.new()
+		click.stream = preload("res://assets/sounds/click.mp3")
+		add_child(click)
+	else:
+		click = null
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	
 	if player.velocity == Vector3.ZERO and Input.is_action_just_pressed("interact") and in_contact and can_interact:
 		can_interact = false
 		messagebox.show_option("Push Tombstone?")
@@ -30,11 +42,16 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 func push_tombstone(result: bool):
 	if result:
 		if puzzle_tombstone:
-			pass
+			get_tree().paused = false
+			click.play()
+			get_tree().create_timer(0.3)
+			messagebox.show_message("The tombstone clicked into place.")
+			MAP.click_count += 1
+			print(str(MAP.click_count))
 		else:
 			messagebox.show_message("It won't budge.")
-	while messagebox.is_showing:
-		await get_tree().process_frame
-	can_interact = true
+			while messagebox.is_showing:
+				await get_tree().process_frame
+			can_interact = true
 
 	

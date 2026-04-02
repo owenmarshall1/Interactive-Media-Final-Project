@@ -67,6 +67,7 @@ func shoot():
 	can_shoot = false
 
 	var bullet = bullet_scene.instantiate()
+	get_parent().add_child(bullet)
 	bullet.global_transform.origin = global_transform.origin + -transform.basis.z * 1.5 + Vector3.UP * -0.5
 
 	# Get horizontal direction only
@@ -74,8 +75,6 @@ func shoot():
 	direction.y = 0
 	direction = direction.normalized()
 	bullet.direction = direction
-
-	get_parent().add_child(bullet)
 
 	await get_tree().create_timer(shoot_cooldown).timeout
 	can_shoot = true

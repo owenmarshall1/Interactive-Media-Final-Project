@@ -16,7 +16,7 @@ func _ready() -> void:
 	detection_area.body_entered.connect(_on_body_entered)
 	detection_area.body_exited.connect(_on_body_exited)
 	
-func _physics_process(delta: float) -> void:	
+func _physics_process(_delta: float) -> void:	
 	if player_in_range:
 		nav_agent.set_target_position(player.global_position)
 		var next_nav_point = nav_agent.get_next_path_position()
@@ -30,7 +30,6 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damage):
 	health -= damage
-	print(health)
 	
 func _on_body_entered(body: Node) -> void:
 	if body == player:

@@ -64,7 +64,7 @@ func _process(delta):
 	ammo_count.text = str(player.ammo)
 		
 	
-func take_damage(amount):
+func take_damage(_amount):
 	return
 
 func relight_cig(result: bool):

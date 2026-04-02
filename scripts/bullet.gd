@@ -9,7 +9,7 @@ func _ready():
 	if is_instance_valid(self):
 		queue_free()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 

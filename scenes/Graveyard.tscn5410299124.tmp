@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://c43aprpo2gvnm" path="res://scenes/Game/Messagebox.tscn" id="9_m8d0s"]
 [ext_resource type="Texture2D" uid="uid://c37okqn0mwdjy" path="res://assets/textures/findmypages.jpg" id="9_whxyv"]
 [ext_resource type="AudioStream" uid="uid://bstxmx8hoy5cq" path="res://assets/sounds/capaholiczsfx-forest-soundscape-night-time-403609.mp3" id="9_yt143"]
-[ext_resource type="Script" uid="uid://c2gp2eecb5idi" path="res://scenes/hint_poster.gd" id="11_2dajg"]
 [ext_resource type="PackedScene" uid="uid://dgv6ln0hwdb2k" path="res://scenes/Game/PauseMenu.tscn" id="12_6uo2k"]
 [ext_resource type="PackedScene" uid="uid://bq3vrr43qpayy" path="res://scenes/Game/ammo_box.tscn" id="12_10d04"]
 [ext_resource type="AudioStream" uid="uid://bv15rfie2auvg" path="res://assets/sounds/paper_interact.mp3" id="15_7x5b5"]
@@ -1284,12 +1283,10 @@ transform = Transform3D(0.9046486, 0, -0.42615825, 0, 1, 0, 0.42615825, 0, 0.904
 player = NodePath("../../../../Player")
 messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="hint_poster" type="CSGBox3D" parent="NavigationRegion3D/Map/Items" unique_id=793283237 node_paths=PackedStringArray("player")]
+[node name="hint_poster" type="CSGBox3D" parent="NavigationRegion3D/Map/Items" unique_id=793283237]
 transform = Transform3D(-1.0001669, 0.026841525, -4.024827e-06, 0.02173558, 1.2264286, -0.00093573146, -0.001638487, -0.11527718, -0.00995612, -65.482864, 3.0294065, 22.427025)
 flip_faces = true
 material = SubResource("StandardMaterial3D_vwnn2")
-script = ExtResource("11_2dajg")
-player = NodePath("../../../../Player")
 
 [node name="Area3D" type="Area3D" parent="NavigationRegion3D/Map/Items/hint_poster" unique_id=2066461796]
 
@@ -1491,5 +1488,5 @@ max_db = -2.0
 autoplay = true
 parameters/looping = true
 
-[connection signal="body_entered" from="NavigationRegion3D/Map/Items/hint_poster/Area3D" to="NavigationRegion3D/Map/Items/hint_poster" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="NavigationRegion3D/Map/Items/hint_poster/Area3D" to="NavigationRegion3D/Map/Items/hint_poster" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Map/Items/hint_poster/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Map/Items/hint_poster/Area3D" to="." method="_on_area_3d_body_exited"]
