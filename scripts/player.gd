@@ -14,23 +14,29 @@ var camera_clamp := 0.20  # max vertical tilt in radians
 
 var camera_rotation := 0.0
 var can_shoot := false
+var is_aiming := false
 
 func _ready():
 	can_shoot = true  
 
 func _physics_process(delta):
+	is_aiming = Input.is_action_pressed("aim")
 	# --- Movement Input ---
-	var input_dir = Vector2.ZERO
-	input_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	input_dir.y = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
+	if is_aiming:
+		velocity.x = 0
+		velocity.z = 0
+	else:
+		var input_dir = Vector2.ZERO
+		input_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+		input_dir.y = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 
-	var input_strength = input_dir.length()
-	if input_strength > 0:
-		input_dir = input_dir.normalized()
+		var input_strength = input_dir.length()
+		if input_strength > 0:
+			input_dir = input_dir.normalized()
 
-	var direction = transform.basis.x * input_dir.x + transform.basis.z * input_dir.y
-	velocity.x = direction.x * speed * input_strength
-	velocity.z = direction.z * speed * input_strength
+		var direction = transform.basis.x * input_dir.x + transform.basis.z * input_dir.y
+		velocity.x = direction.x * speed * input_strength
+		velocity.z = direction.z * speed * input_strength
 
 	# --- Gravity ---
 	if not is_on_floor():
@@ -49,7 +55,7 @@ func _physics_process(delta):
 	camera.rotation.x = camera_rotation
 
 	# --- Shoot ---
-	if can_shoot and is_inside_tree() and Input.is_action_just_pressed("shoot") and ammo > 0:
+	if can_shoot and is_aiming and Input.is_action_just_pressed("shoot") and ammo > 0:
 		shoot()
 
 	# --- Move ---
@@ -60,7 +66,7 @@ func shoot():
 	can_shoot = false
 
 	var bullet = bullet_scene.instantiate()
-	bullet.global_transform.origin = global_transform.origin + -transform.basis.z * 1.5 + Vector3.UP * 0.05
+	bullet.global_transform.origin = global_transform.origin + -transform.basis.z * 1.5 + Vector3.UP * -0.5
 
 	# Get horizontal direction only
 	var direction = -transform.basis.z
