@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dyvfnckiyws1r"]
+
+[ext_resource type="PackedScene" uid="uid://o1eiuyu5wgx5" path="res://assets/models/items/cigarette_pack.glb" id="1_mo4w0"]
+[ext_resource type="Script" uid="uid://bd48fj4sh1a5d" path="res://scripts/cigarette_pack.gd" id="2_w3cix"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w3cix"]
+size = Vector3(1.543396, 0.63035583, 1.2580566)
+
+[node name="cigarette_pack" unique_id=412636089 instance=ExtResource("1_mo4w0")]
+script = ExtResource("2_w3cix")
+
+[node name="Cube_006" parent="." index="0" unique_id=1871705409]
+transform = Transform3D(-3.040942e-09, -0.1848822, 0, 0.06956864, -8.081457e-09, 0, 0, 0, 0.13258472, 0, 0.18155761, 0)
+
+[node name="StaticBody3D" type="Area3D" parent="." index="1" unique_id=1663709521]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=2072521443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05014038, 0.5482254, -0.022094727)
+shape = SubResource("BoxShape3D_w3cix")
+
+[connection signal="body_entered" from="StaticBody3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="StaticBody3D" to="." method="_on_area_3d_body_exited"]

@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@export var max_cig_time := 180.0
-var cig_time := 180.0
+var max_cig_time := 60.0
+var cig_time := 60.0
 
 @export var player : Node
 
@@ -13,7 +13,7 @@ var cig_time := 180.0
 @onready var cig_counter = $CigaretteBarContainer/CigCounter
 @onready var ammo_count = $AmmoCount
 
-var cig_count := 3
+var cig_count := 0
 var cig_full_width := 0.0
 var cig_is_empty := false
 
@@ -42,13 +42,13 @@ func _process(delta):
 		smoke.visible = false
 		burn_tip.visible = false
 		
-	if cig_time <= 0 and not cig_is_empty:
+	if cig_time == 0 and not cig_is_empty:
 		cig_is_empty = true
 		messagebox.show_message("My cigarette ran out.")
 		
 	if Input.is_action_just_pressed("relight"):
 		if cig_count > 0:
-			messagebox.show_option("Light another one?")
+			messagebox.show_option("Light one?")
 			messagebox.confirmed.connect(relight_cig, CONNECT_ONE_SHOT)
 		else:
 			messagebox.show_message("It looks like i'm out of cigarettes.")

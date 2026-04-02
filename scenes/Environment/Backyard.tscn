@@ -41,6 +41,8 @@ emission_on_uv2 = true
 backlight = Color(0.9384497, 0.9384497, 0.9384497, 1)
 uv1_triplanar_sharpness = 0.00043364873
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_4uceq"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p22em"]
 albedo_texture = ExtResource("1_rl6in")
 uv1_triplanar = true
@@ -95,6 +97,7 @@ player = NodePath("../Player")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -18.150366, 2.7351213, -7.173791)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1871238060]
+navigation_mesh = SubResource("NavigationMesh_4uceq")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1053139026]
 transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -58.50089, 0, 40.23088)

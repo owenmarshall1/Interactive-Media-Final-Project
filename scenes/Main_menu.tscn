@@ -38,7 +38,6 @@ albedo_texture = ExtResource("2_m5x4w")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 50.0
-emission_on_uv2 = true
 backlight = Color(0.9384497, 0.9384497, 0.9384497, 1)
 uv1_triplanar_sharpness = 0.00043364873
 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biqlri7fxo000"
-path.s3tc="res://.godot/imported/o_meshes_stone_texture.jpg-b718030f5824e85d3c8a66c84467e3c5.s3tc.ctex"
+uid="uid://lm27h7g788h3"
+path.s3tc="res://.godot/imported/o_meshes_Texturelabs_Wood_189S.jpg-175fbf112bbcc4df4bef3ed4fd354db0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b30e3d1e0e0b9d01e8f470564218ed31"
+"md5": "0a875c5d7c662125a882de03c0daed7e"
 }
 
 [deps]
 
-source_file="res://assets/models/o_meshes_stone_texture.jpg"
-dest_files=["res://.godot/imported/o_meshes_stone_texture.jpg-b718030f5824e85d3c8a66c84467e3c5.s3tc.ctex"]
+source_file="res://assets/textures/o_meshes_Texturelabs_Wood_189S.jpg"
+dest_files=["res://.godot/imported/o_meshes_Texturelabs_Wood_189S.jpg-175fbf112bbcc4df4bef3ed4fd354db0.s3tc.ctex"]
 
 [params]
 

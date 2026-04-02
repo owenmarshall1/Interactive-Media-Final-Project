@@ -7,7 +7,7 @@ extends CharacterBody3D
 
 @export var bullet_scene: PackedScene
 @export var shoot_cooldown := 0.7
-@onready var ammo = 120
+@onready var ammo = 12
 
 @onready var camera = $SpringArm3D/Camera3D
 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i4bsd3h4i05w"
-path.s3tc="res://.godot/imported/o_meshes_Marlboro-Flat-A1-800x508.jpg-d61c71e57efebcff411267007eabbb51.s3tc.ctex"
+uid="uid://cc5cydru3vvgx"
+path.s3tc="res://.godot/imported/ammo_box_peters_p1.jpg-f1e688c612bb1cf653aee3cceb9a445e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "3db3273d020759a00caf6c2267964dee"
+"md5": "6ef0baf8529bb13a51c596656de9aa5f"
 }
 
 [deps]
 
-source_file="res://assets/models/o_meshes_Marlboro-Flat-A1-800x508.jpg"
-dest_files=["res://.godot/imported/o_meshes_Marlboro-Flat-A1-800x508.jpg-d61c71e57efebcff411267007eabbb51.s3tc.ctex"]
+source_file="res://assets/models/items/ammo_box_peters_p1.jpg"
+dest_files=["res://.godot/imported/ammo_box_peters_p1.jpg-f1e688c612bb1cf653aee3cceb9a445e.s3tc.ctex"]
 
 [params]
 

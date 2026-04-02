@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://c3j23jpdwkfmy"]
 
 [ext_resource type="PackedScene" uid="uid://btw40m6xcto7o" path="res://assets/models/environment/tombstone/tombstone.glb" id="1_qhh54"]
+[ext_resource type="Script" uid="uid://wesae4tsidyj" path="res://scripts/tombstone.gd" id="2_uliyw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uliyw"]
 size = Vector3(2.0507126, 2.9284363, 0.6254883)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vryhx"]
+size = Vector3(1.8049622, 1, 1.2471924)
+
 [node name="tombstone" unique_id=1471161354 instance=ExtResource("1_qhh54")]
+script = ExtResource("2_uliyw")
 
 [node name="Cube_003" parent="." index="0" unique_id=1729644653]
 transform = Transform3D(1, 0, 0, 0, 1.9314501, 0, 0, 0, 0.28086042, 0, 0, 0)
@@ -15,3 +20,12 @@ transform = Transform3D(1, 0, 0, 0, 1.9314501, 0, 0, 0, 0.28086042, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1714539734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0031166077, 1.1093903, -0.012451172)
 shape = SubResource("BoxShape3D_uliyw")
+
+[node name="Area3D" type="Area3D" parent="." index="2" unique_id=1823909455]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=1718488682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019088745, 0, -0.83516276)
+shape = SubResource("BoxShape3D_vryhx")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -78,19 +78,17 @@ func show_option(text: String):
 # BUTTON HANDLERS
 # -------------------------
 func _on_yes_pressed():
-	print("YES") # debug
 	_emit_and_close(true)
 
 func _on_no_pressed():
-	print("NO") # debug
 	_emit_and_close(false)
 
 # -------------------------
 # HELPERS
 # -------------------------
 func _emit_and_close(result: bool):
-	emit_signal("confirmed", result)
 	_close()
+	emit_signal("confirmed", result)
 
 func _close():
 	panel.visible = false

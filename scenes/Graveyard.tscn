@@ -7,8 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://m3hxd2bwr0c8" path="res://scenes/Enemy.tscn" id="4_mskxn"]
 [ext_resource type="PackedScene" uid="uid://bv55684acr0cr" path="res://scenes/Environment/Fence.tscn" id="5_86hyv"]
 [ext_resource type="PackedScene" uid="uid://d06iaa88t6bax" path="res://scenes/HUD.tscn" id="5_x4r7r"]
+[ext_resource type="PackedScene" uid="uid://dyvfnckiyws1r" path="res://scenes/Game/cigarette_pack.tscn" id="7_0tsb4"]
 [ext_resource type="PackedScene" uid="uid://c3j23jpdwkfmy" path="res://scenes/Environment/tombstone.tscn" id="8_cogam"]
+[ext_resource type="PackedScene" uid="uid://c43aprpo2gvnm" path="res://scenes/Game/Messagebox.tscn" id="9_m8d0s"]
 [ext_resource type="AudioStream" uid="uid://bstxmx8hoy5cq" path="res://assets/sounds/capaholiczsfx-forest-soundscape-night-time-403609.mp3" id="9_yt143"]
+[ext_resource type="PackedScene" uid="uid://bq3vrr43qpayy" path="res://scenes/Game/ammo_box.tscn" id="12_10d04"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q6ro2"]
 sky_top_color = Color(0.058672562, 7.314069e-05, 0.14562559, 1)
@@ -21,12 +24,12 @@ sun_angle_max = 0.0
 use_debanding = false
 energy_multiplier = 0.5
 
-[sub_resource type="Sky" id="Sky_mskxn"]
+[sub_resource type="Sky" id="Sky_yt143"]
 sky_material = SubResource("ProceduralSkyMaterial_q6ro2")
 
 [sub_resource type="Environment" id="Environment_q6ro2"]
 background_mode = 2
-sky = SubResource("Sky_mskxn")
+sky = SubResource("Sky_yt143")
 fog_light_color = Color(0.106357954, 0.119706444, 0.1404773, 1)
 fog_sky_affect = 0.0
 volumetric_fog_enabled = true
@@ -963,113 +966,198 @@ transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0
 
 [node name="Tombstones" type="Node3D" parent="NavigationRegion3D/Map" unique_id=1208985527]
 
-[node name="tombstone" parent="NavigationRegion3D/Map/Tombstones" unique_id=1471161354 instance=ExtResource("8_cogam")]
+[node name="tombstone" parent="NavigationRegion3D/Map/Tombstones" unique_id=1471161354 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.86683, 0.3557408, 36.41591)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone2" parent="NavigationRegion3D/Map/Tombstones" unique_id=443758757 instance=ExtResource("8_cogam")]
+[node name="tombstone2" parent="NavigationRegion3D/Map/Tombstones" unique_id=443758757 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.82907, 0.3557408, 36.41591)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone3" parent="NavigationRegion3D/Map/Tombstones" unique_id=83259420 instance=ExtResource("8_cogam")]
+[node name="tombstone3" parent="NavigationRegion3D/Map/Tombstones" unique_id=83259420 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.79844, 0.3557408, 36.41591)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone4" parent="NavigationRegion3D/Map/Tombstones" unique_id=390026749 instance=ExtResource("8_cogam")]
+[node name="tombstone4" parent="NavigationRegion3D/Map/Tombstones" unique_id=390026749 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.86683, 0.3557408, 43.973793)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone5" parent="NavigationRegion3D/Map/Tombstones" unique_id=419142070 instance=ExtResource("8_cogam")]
+[node name="tombstone5" parent="NavigationRegion3D/Map/Tombstones" unique_id=419142070 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.82907, 0.3557408, 43.973793)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone6" parent="NavigationRegion3D/Map/Tombstones" unique_id=1647157735 instance=ExtResource("8_cogam")]
+[node name="tombstone6" parent="NavigationRegion3D/Map/Tombstones" unique_id=1647157735 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.79844, 0.3557408, 43.973793)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone7" parent="NavigationRegion3D/Map/Tombstones" unique_id=1006962030 instance=ExtResource("8_cogam")]
+[node name="tombstone7" parent="NavigationRegion3D/Map/Tombstones" unique_id=1006962030 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.86683, 0.3557408, 51.775227)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone8" parent="NavigationRegion3D/Map/Tombstones" unique_id=1947107723 instance=ExtResource("8_cogam")]
+[node name="tombstone8" parent="NavigationRegion3D/Map/Tombstones" unique_id=1947107723 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.82907, 0.3557408, 51.775227)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone9" parent="NavigationRegion3D/Map/Tombstones" unique_id=2129394860 instance=ExtResource("8_cogam")]
+[node name="tombstone9" parent="NavigationRegion3D/Map/Tombstones" unique_id=2129394860 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.79844, 0.3557408, 51.775227)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone10" parent="NavigationRegion3D/Map/Tombstones" unique_id=1646485132 instance=ExtResource("8_cogam")]
+[node name="tombstone10" parent="NavigationRegion3D/Map/Tombstones" unique_id=1646485132 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.78081, 0.3557408, 36.41591)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone11" parent="NavigationRegion3D/Map/Tombstones" unique_id=192370125 instance=ExtResource("8_cogam")]
+[node name="tombstone11" parent="NavigationRegion3D/Map/Tombstones" unique_id=192370125 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.74305, 0.3557408, 36.41591)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone12" parent="NavigationRegion3D/Map/Tombstones" unique_id=1948241117 instance=ExtResource("8_cogam")]
+[node name="tombstone12" parent="NavigationRegion3D/Map/Tombstones" unique_id=1948241117 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.71242, 0.3557408, 36.41591)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone13" parent="NavigationRegion3D/Map/Tombstones" unique_id=957595428 instance=ExtResource("8_cogam")]
+[node name="tombstone13" parent="NavigationRegion3D/Map/Tombstones" unique_id=957595428 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.78081, 0.3557408, 43.973793)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone14" parent="NavigationRegion3D/Map/Tombstones" unique_id=780075147 instance=ExtResource("8_cogam")]
+[node name="tombstone14" parent="NavigationRegion3D/Map/Tombstones" unique_id=780075147 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.74305, 0.3557408, 43.973793)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone15" parent="NavigationRegion3D/Map/Tombstones" unique_id=985196090 instance=ExtResource("8_cogam")]
+[node name="tombstone15" parent="NavigationRegion3D/Map/Tombstones" unique_id=985196090 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.71242, 0.3557408, 43.973793)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone16" parent="NavigationRegion3D/Map/Tombstones" unique_id=1559483965 instance=ExtResource("8_cogam")]
+[node name="tombstone16" parent="NavigationRegion3D/Map/Tombstones" unique_id=1559483965 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.78081, 0.3557408, 51.775227)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone17" parent="NavigationRegion3D/Map/Tombstones" unique_id=692429942 instance=ExtResource("8_cogam")]
+[node name="tombstone17" parent="NavigationRegion3D/Map/Tombstones" unique_id=692429942 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.74305, 0.3557408, 51.775227)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone18" parent="NavigationRegion3D/Map/Tombstones" unique_id=314171505 instance=ExtResource("8_cogam")]
+[node name="tombstone18" parent="NavigationRegion3D/Map/Tombstones" unique_id=314171505 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.71242, 0.3557408, 51.775227)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone19" parent="NavigationRegion3D/Map/Tombstones" unique_id=1703122292 instance=ExtResource("8_cogam")]
+[node name="tombstone19" parent="NavigationRegion3D/Map/Tombstones" unique_id=1703122292 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.86683, 0.3557408, 59.877346)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone20" parent="NavigationRegion3D/Map/Tombstones" unique_id=1722102065 instance=ExtResource("8_cogam")]
+[node name="tombstone20" parent="NavigationRegion3D/Map/Tombstones" unique_id=1722102065 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.82907, 0.3557408, 59.877346)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone21" parent="NavigationRegion3D/Map/Tombstones" unique_id=205033612 instance=ExtResource("8_cogam")]
+[node name="tombstone21" parent="NavigationRegion3D/Map/Tombstones" unique_id=205033612 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.79844, 0.3557408, 59.877346)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone22" parent="NavigationRegion3D/Map/Tombstones" unique_id=27740079 instance=ExtResource("8_cogam")]
+[node name="tombstone22" parent="NavigationRegion3D/Map/Tombstones" unique_id=27740079 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.78081, 0.3557408, 59.877346)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone23" parent="NavigationRegion3D/Map/Tombstones" unique_id=1675404708 instance=ExtResource("8_cogam")]
+[node name="tombstone23" parent="NavigationRegion3D/Map/Tombstones" unique_id=1675404708 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.74305, 0.3557408, 59.877346)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone24" parent="NavigationRegion3D/Map/Tombstones" unique_id=676455507 instance=ExtResource("8_cogam")]
+[node name="tombstone24" parent="NavigationRegion3D/Map/Tombstones" unique_id=676455507 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.71242, 0.3557408, 59.877346)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone25" parent="NavigationRegion3D/Map/Tombstones" unique_id=410245390 instance=ExtResource("8_cogam")]
+[node name="tombstone25" parent="NavigationRegion3D/Map/Tombstones" unique_id=410245390 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.62868, 0.3557408, 36.41591)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone26" parent="NavigationRegion3D/Map/Tombstones" unique_id=377337143 instance=ExtResource("8_cogam")]
+[node name="tombstone26" parent="NavigationRegion3D/Map/Tombstones" unique_id=377337143 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.59092, 0.3557408, 36.41591)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone27" parent="NavigationRegion3D/Map/Tombstones" unique_id=2114021376 instance=ExtResource("8_cogam")]
+[node name="tombstone27" parent="NavigationRegion3D/Map/Tombstones" unique_id=2114021376 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.56029, 0.3557408, 36.41591)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone28" parent="NavigationRegion3D/Map/Tombstones" unique_id=97782221 instance=ExtResource("8_cogam")]
+[node name="tombstone28" parent="NavigationRegion3D/Map/Tombstones" unique_id=97782221 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.62868, 0.3557408, 43.973793)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone29" parent="NavigationRegion3D/Map/Tombstones" unique_id=141391793 instance=ExtResource("8_cogam")]
+[node name="tombstone29" parent="NavigationRegion3D/Map/Tombstones" unique_id=141391793 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.59092, 0.3557408, 43.973793)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone30" parent="NavigationRegion3D/Map/Tombstones" unique_id=1984370403 instance=ExtResource("8_cogam")]
+[node name="tombstone30" parent="NavigationRegion3D/Map/Tombstones" unique_id=1984370403 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.56029, 0.3557408, 43.973793)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone31" parent="NavigationRegion3D/Map/Tombstones" unique_id=97314850 instance=ExtResource("8_cogam")]
+[node name="tombstone31" parent="NavigationRegion3D/Map/Tombstones" unique_id=97314850 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.62868, 0.3557408, 51.775227)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone32" parent="NavigationRegion3D/Map/Tombstones" unique_id=1465974248 instance=ExtResource("8_cogam")]
+[node name="tombstone32" parent="NavigationRegion3D/Map/Tombstones" unique_id=1465974248 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.59092, 0.3557408, 51.775227)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone33" parent="NavigationRegion3D/Map/Tombstones" unique_id=1696086576 instance=ExtResource("8_cogam")]
+[node name="tombstone33" parent="NavigationRegion3D/Map/Tombstones" unique_id=1696086576 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.56029, 0.3557408, 51.775227)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone34" parent="NavigationRegion3D/Map/Tombstones" unique_id=1712469211 instance=ExtResource("8_cogam")]
+[node name="tombstone34" parent="NavigationRegion3D/Map/Tombstones" unique_id=1712469211 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.62868, 0.3557408, 59.877346)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone35" parent="NavigationRegion3D/Map/Tombstones" unique_id=1885155469 instance=ExtResource("8_cogam")]
+[node name="tombstone35" parent="NavigationRegion3D/Map/Tombstones" unique_id=1885155469 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.59092, 0.3557408, 59.877346)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
-[node name="tombstone36" parent="NavigationRegion3D/Map/Tombstones" unique_id=238336633 instance=ExtResource("8_cogam")]
+[node name="tombstone36" parent="NavigationRegion3D/Map/Tombstones" unique_id=238336633 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("8_cogam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.56029, 0.3557408, 59.877346)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
+
+[node name="Items" type="Node3D" parent="NavigationRegion3D/Map" unique_id=35985745]
+
+[node name="cigarette_pack" parent="NavigationRegion3D/Map/Items" unique_id=412636089 node_paths=PackedStringArray("HUD", "player", "messagebox") instance=ExtResource("7_0tsb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.257414, -0.10518116, -11.762626)
+HUD = NodePath("../../../../HUD")
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
+
+[node name="ammo_box" parent="NavigationRegion3D/Map/Items" unique_id=1858306315 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("12_10d04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.433756, 0.09644366, -14.48654)
+player = NodePath("../../../../Player")
+messagebox = NodePath("../../../../HUD/Messagebox2")
 
 [node name="Enemies" type="Node3D" parent="NavigationRegion3D" unique_id=1642701137]
 
@@ -1099,6 +1187,8 @@ player_path = NodePath("../../../Player")
 
 [node name="HUD" parent="." unique_id=675890851 node_paths=PackedStringArray("player") instance=ExtResource("5_x4r7r")]
 player = NodePath("../Player")
+
+[node name="Messagebox2" parent="HUD" unique_id=804070227 instance=ExtResource("9_m8d0s")]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=587250349]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134.4214, -1.9073486e-06, 22.869291)
