@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://c6u72gv2nahj8"]
+
+[ext_resource type="Script" uid="uid://di3u0ih5h17jl" path="res://scripts/inventoryUI.gd" id="1_feih8"]
+
+[node name="Inventory" type="CanvasLayer" unique_id=1711317546]
+
+[node name="Control" type="Control" parent="." unique_id=902788606]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+script = ExtResource("1_feih8")
+
+[node name="HBoxContainer" type="Control" parent="Control" unique_id=185513076]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -140.0
+offset_right = 176.0
+offset_bottom = -49.0
+grow_vertical = 0
+
+[node name="Prev" type="SubViewportContainer" parent="Control/HBoxContainer" unique_id=66001222]
+layout_mode = 0
+offset_top = 59.0
+offset_right = 32.0
+offset_bottom = 91.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SubViewport" type="SubViewport" parent="Control/HBoxContainer/Prev" unique_id=1874660697]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(32, 32)
+render_target_update_mode = 4
+
+[node name="Root3D" type="Node3D" parent="Control/HBoxContainer/Prev/SubViewport" unique_id=1061460325]
+
+[node name="Camera3D" type="Camera3D" parent="Control/HBoxContainer/Prev/SubViewport/Root3D" unique_id=1756244181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Control/HBoxContainer/Prev/SubViewport/Root3D" unique_id=2141825544]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 3, 3)
+
+[node name="Current" type="SubViewportContainer" parent="Control/HBoxContainer" unique_id=794557230]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 27.0
+offset_right = 100.0
+offset_bottom = 91.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SubViewport" type="SubViewport" parent="Control/HBoxContainer/Current" unique_id=576299594]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(64, 64)
+render_target_update_mode = 4
+
+[node name="Root3D" type="Node3D" parent="Control/HBoxContainer/Current/SubViewport" unique_id=63816116]
+
+[node name="Camera3D" type="Camera3D" parent="Control/HBoxContainer/Current/SubViewport/Root3D" unique_id=981420398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Control/HBoxContainer/Current/SubViewport/Root3D" unique_id=1811596549]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 3, 3)
+
+[node name="Next" type="SubViewportContainer" parent="Control/HBoxContainer" unique_id=1724325501]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 59.0
+offset_right = 136.0
+offset_bottom = 91.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SubViewport" type="SubViewport" parent="Control/HBoxContainer/Next" unique_id=682296430]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(32, 32)
+render_target_update_mode = 4
+
+[node name="Root3D" type="Node3D" parent="Control/HBoxContainer/Next/SubViewport" unique_id=580885224]
+
+[node name="Camera3D" type="Camera3D" parent="Control/HBoxContainer/Next/SubViewport/Root3D" unique_id=323966091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Control/HBoxContainer/Next/SubViewport/Root3D" unique_id=911890144]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 3, 3)

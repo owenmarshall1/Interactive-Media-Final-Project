@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://smdnovyepq4q"]
+
+[ext_resource type="PackedScene" uid="uid://crltn1u8dedw1" path="res://assets/models/items/ammo_box.glb" id="1_kem8c"]
+
+[node name="Node3D" type="Node3D" unique_id=1838190828]
+
+[node name="ammo_box" parent="." unique_id=1858306315 instance=ExtResource("1_kem8c")]
+transform = Transform3D(0.9659258, -1.489429e-09, -0.25881907, -0.25881907, -1.1313341e-08, -0.9659258, -1.489429e-09, 1, -1.1313341e-08, 0, 0, 2.5)

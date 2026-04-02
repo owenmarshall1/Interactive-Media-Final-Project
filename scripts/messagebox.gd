@@ -6,6 +6,7 @@ signal confirmed(result: bool)
 @onready var label = $Panel/Label
 @onready var button_yes = $Panel/Yes
 @onready var button_no = $Panel/No
+@onready var inventory = $"../Inventory"
 
 var is_showing := false
 
@@ -26,6 +27,7 @@ func show_message(text: String, pause := true):
 	if is_showing:
 		return
 	
+	inventory.visible = false
 	panel.visible = true
 	is_showing = true
 	label.text = ""
@@ -54,6 +56,7 @@ func show_option(text: String):
 	if is_showing:
 		return
 	
+	inventory.visible = false
 	panel.visible = true
 	is_showing = true
 	label.text = ""
@@ -95,6 +98,7 @@ func _close():
 	button_yes.visible = false
 	button_no.visible = false
 	is_showing = false
+	inventory.visible = true
 
 	get_tree().paused = false
 

@@ -3,6 +3,7 @@ extends Node3D
 @export var HUD: CanvasLayer
 @export var player: Node3D
 @export var messagebox: CanvasLayer
+@export var item_scene: PackedScene	
 
 var in_contact := false
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +27,12 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 		
 func pickup(result: bool):
 	if result:
-		HUD.cig_count += 3
+		var item = Item.new()
+		item.scene = item_scene
+		item.name = "Cigarettes"
+		item.type = "consumable"
+		item.id = "cigs"
+
+		Inventory.add_item(item) # This will now update UI automatically
 		queue_free()
 	

@@ -3,6 +3,8 @@ extends Node3D
 @export var player: Node3D
 @export var messagebox: CanvasLayer
 
+@export var item_scene: PackedScene
+
 var in_contact := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,6 +27,12 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 		
 func pickup(result: bool):
 	if result:
-		player.ammo += 12
+		var item = Item.new()
+		item.scene = item_scene
+		item.name = "Ammo"
+		item.type = "ammo"
+		item.id = "ammo"
+
+		Inventory.add_item(item) # This will now update UI automatically
 		queue_free()
 	

@@ -6,14 +6,15 @@ extends CharacterBody3D
 @export var gravity := 9.8
 
 @export var bullet_scene: PackedScene
-@export var shoot_cooldown := 0.8
+@export var shoot_cooldown := 0.85
 @onready var ammo = 0
 
 @onready var camera = $SpringArm3D/Camera3D
+@onready var gunshot = $GunShot
 
 var camera_clamp := 0.20  # max vertical tilt in radians
-
 var camera_rotation := 0.0
+
 var can_shoot := false
 var is_aiming := false
 
@@ -44,6 +45,13 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 	else:
 		velocity.y = 0
+		
+	#-- Inventory Controls ---
+	if Input.is_action_just_pressed("next_item"):
+		Inventory.next_item()
+
+	if Input.is_action_just_pressed("prev_item"):
+		Inventory.prev_item()
 
 	# --- Controller Horizontal Look ---
 	var look_input_x = Input.get_action_strength("look_right") - Input.get_action_strength("look_left")
@@ -69,6 +77,7 @@ func shoot():
 	var bullet = bullet_scene.instantiate()
 	get_parent().add_child(bullet)
 	bullet.global_transform.origin = global_transform.origin + -transform.basis.z * 1.5 + Vector3.UP * -0.5
+	gunshot.play()
 
 	# Get horizontal direction only
 	var direction = -transform.basis.z
