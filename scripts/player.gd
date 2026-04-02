@@ -9,7 +9,8 @@ extends CharacterBody3D
 @export var shoot_cooldown := 0.7
 @onready var ammo = 120
 
-@onready var camera = $Camera3D
+@onready var camera = $SpringArm3D/Camera3D
+
 var camera_clamp := 0.20  # max vertical tilt in radians
 
 var camera_rotation := 0.0

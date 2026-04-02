@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://bp1vs8xivegqu"]
+
+[ext_resource type="Texture2D" uid="uid://d37ah5ys5rdx" path="res://assets/textures/grass.jpg" id="1_rl6in"]
+[ext_resource type="Texture2D" uid="uid://cav4a6nigdm83" path="res://assets/textures/moon.jpg" id="2_qn3ms"]
+[ext_resource type="AudioStream" uid="uid://bstxmx8hoy5cq" path="res://assets/sounds/capaholiczsfx-forest-soundscape-night-time-403609.mp3" id="3_p22em"]
+[ext_resource type="PackedScene" uid="uid://d06iaa88t6bax" path="res://scenes/HUD.tscn" id="4_su4qm"]
+[ext_resource type="PackedScene" uid="uid://b1g6316yxjmga" path="res://scenes/Player.tscn" id="5_su4qm"]
+[ext_resource type="Texture2D" uid="uid://lm27h7g788h3" path="res://assets/models/o_meshes_Texturelabs_Wood_189S.jpg" id="6_4uceq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_su4qm"]
+sky_top_color = Color(0.058672562, 7.314069e-05, 0.14562559, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_curve = 0.08615198
+sky_energy_multiplier = 1.62
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+sun_angle_max = 0.0
+use_debanding = false
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_mskxn"]
+sky_material = SubResource("ProceduralSkyMaterial_su4qm")
+
+[sub_resource type="Environment" id="Environment_4uceq"]
+background_mode = 2
+sky = SubResource("Sky_mskxn")
+fog_light_color = Color(0.106357954, 0.119706444, 0.1404773, 1)
+fog_sky_affect = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.07
+volumetric_fog_albedo = Color(0.088810496, 0.06429659, 0.108177505, 1)
+volumetric_fog_emission = Color(0.11939367, 0.10946884, 0.09954437, 1)
+volumetric_fog_sky_affect = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dutki"]
+albedo_texture = ExtResource("2_qn3ms")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 50.0
+emission_on_uv2 = true
+backlight = Color(0.9384497, 0.9384497, 0.9384497, 1)
+uv1_triplanar_sharpness = 0.00043364873
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p22em"]
+albedo_texture = ExtResource("1_rl6in")
+uv1_triplanar = true
+uv2_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_heru0"]
+albedo_texture = ExtResource("6_4uceq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmhb6"]
+albedo_texture = ExtResource("6_4uceq")
+uv1_scale = Vector3(11, 11, 11)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4uceq"]
+albedo_texture = ExtResource("6_4uceq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a08s"]
+albedo_texture = ExtResource("6_4uceq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3e3wv"]
+albedo_texture = ExtResource("6_4uceq")
+
+[node name="Node3D" type="Node3D" unique_id=1221666833]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1374509399]
+environment = SubResource("Environment_4uceq")
+
+[node name="Moon" type="CSGSphere3D" parent="." unique_id=852854086]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -349.3689, 276.16846, 266.4923)
+cast_shadow = 0
+radius = 20.0
+radial_segments = 30
+rings = 20
+material = SubResource("StandardMaterial3D_dutki")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Moon" unique_id=140873068]
+transform = Transform3D(0.4106258, 0.40162674, -0.4246016, -0.058920253, 0.5447231, 0.4582677, 0.58148, -0.22842243, 0.3462778, 3.5984497, 1.5297241, -0.87260437)
+light_energy = 2.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=105600679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134.4214, -1.9073486e-06, 22.869291)
+stream = ExtResource("3_p22em")
+attenuation_model = 3
+volume_db = -7.5
+max_db = -2.0
+autoplay = true
+parameters/looping = true
+
+[node name="HUD" parent="." unique_id=675890851 node_paths=PackedStringArray("player") instance=ExtResource("4_su4qm")]
+player = NodePath("../Player")
+
+[node name="Player" parent="." unique_id=894090680 instance=ExtResource("5_su4qm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -18.150366, 2.7351213, -7.173791)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1871238060]
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1053139026]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -58.50089, 0, 40.23088)
+use_collision = true
+size = Vector3(175.07019, 0.001, 134.77269)
+material = SubResource("StandardMaterial3D_p22em")
+metadata/_edit_lock_ = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=278952658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5908687, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=889629451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5485115, 2.8803227, -10.733425)
+material_override = SubResource("StandardMaterial3D_heru0")
+use_collision = true
+size = Vector3(33.492798, 9.942383, 20.043884)
+material = SubResource("StandardMaterial3D_fmhb6")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=613435156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5359546, 1.8472762, -1.3692355)
+operation = 2
+size = Vector3(3.069336, 5.538574, 1.5380859)
+material = SubResource("StandardMaterial3D_4uceq")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=198228255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1001487, 2.9997375, -10.39811)
+operation = 2
+size = Vector3(28.232853, 7.846596, 16.520752)
+material = SubResource("StandardMaterial3D_5a08s")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=23432777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5814209, -1.6061413, -0.31676233)
+size = Vector3(3.1193848, 0.9351349, 1)
+material = SubResource("StandardMaterial3D_3e3wv")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1276015257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5814209, -1.7223599, 0.48569882)
+size = Vector3(3.1193848, 0.70269775, 1)
+material = SubResource("StandardMaterial3D_3e3wv")

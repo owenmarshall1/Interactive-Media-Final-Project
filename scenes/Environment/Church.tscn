@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ccwdksq8oda7g"]
+
+[ext_resource type="Texture2D" uid="uid://lm27h7g788h3" path="res://assets/models/o_meshes_Texturelabs_Wood_189S.jpg" id="1_55lgj"]
+[ext_resource type="PackedScene" uid="uid://b1g6316yxjmga" path="res://scenes/Player.tscn" id="2_55lgj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55lgj"]
+albedo_texture = ExtResource("1_55lgj")
+uv1_scale = Vector3(10, 10, 10)
+uv1_offset = Vector3(4, 4, 20)
+uv1_triplanar = true
+
+[node name="Node3D" type="Node3D" unique_id=1087057886]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=401028897]
+transform = Transform3D(100, 0, 0, 0, 0.1, 0, 0, 0, 100, 5.5358887, 0, 1.8310547)
+use_collision = true
+size = Vector3(0.53063965, 1, 0.15771484)
+material = SubResource("StandardMaterial3D_55lgj")
+
+[node name="Player" parent="." unique_id=894090680 instance=ExtResource("2_55lgj")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, -20.53502, 2.4505434, 1.8453991)
