@@ -11,6 +11,7 @@ extends CharacterBody3D
 
 @onready var camera = $SpringArm3D/Camera3D
 @onready var gunshot = $GunShot
+@onready var inventory_swap = $InventorySwap
 
 var camera_clamp := 0.20  # max vertical tilt in radians
 var camera_rotation := 0.0
@@ -48,9 +49,11 @@ func _physics_process(delta):
 		
 	#-- Inventory Controls ---
 	if Input.is_action_just_pressed("next_item"):
+		inventory_swap.play()
 		Inventory.next_item()
 
 	if Input.is_action_just_pressed("prev_item"):
+		inventory_swap.play()
 		Inventory.prev_item()
 
 	# --- Controller Horizontal Look ---

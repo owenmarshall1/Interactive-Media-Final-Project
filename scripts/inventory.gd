@@ -3,14 +3,14 @@ extends Node
 var items: Array = []
 var selected_index := 0
 
+var interaction_locked := false
+
 signal inventory_changed	
 
 func _ready():
 	#auto add gun
 	set_process_unhandled_input(true)
 	var gun_item = Item.new()
-	gun_item.name = "Gun"
-	gun_item.type = "weapon"
 	gun_item.id = "gun"
 	# assign the gun 3D scene
 	gun_item.scene = preload("res://scenes/Game/Gun.tscn")
@@ -18,8 +18,6 @@ func _ready():
 	
 	#auto add lighter
 	var lighter_item = Item.new()
-	lighter_item.name = "Lighter"
-	lighter_item.type = "lighter"
 	lighter_item.id = "lighter"
 	# assign the gun 3D scene
 	lighter_item.scene = preload("res://scenes/Game/InventoryLighter.tscn")

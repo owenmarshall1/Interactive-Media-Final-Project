@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c43aprpo2gvnm" path="res://scenes/Game/Messagebox.tscn" id="5_8cuoo"]
 [ext_resource type="PackedScene" uid="uid://dgv6ln0hwdb2k" path="res://scenes/Game/PauseMenu.tscn" id="6_v6ord"]
 [ext_resource type="PackedScene" uid="uid://c6u72gv2nahj8" path="res://scenes/Game/inventory.tscn" id="7_5ismn"]
+[ext_resource type="AudioStream" uid="uid://bp77mvjhthna6" path="res://assets/sounds/reload.mp3" id="8_fsgyu"]
 
 [node name="HUD" type="CanvasLayer" unique_id=675890851]
 script = ExtResource("1_nysna")
@@ -73,6 +74,15 @@ text = "0"
 
 [node name="Inventory" parent="." unique_id=1711317546 instance=ExtResource("7_5ismn")]
 
+[node name="AmmoCount" type="Label" parent="Inventory" unique_id=1140509823]
+layout_mode = 0
+offset_left = 88.0
+offset_top = -6.0
+offset_right = 128.0
+offset_bottom = 17.0
+text = "12"
+horizontal_alignment = 1
+
 [node name="TestLabel" type="Label" parent="." unique_id=624857651]
 offset_left = 50.0
 offset_top = 270.0
@@ -80,8 +90,6 @@ offset_right = 188.0
 offset_bottom = 351.0
 text = "test"
 
-[node name="AmmoCount" type="Label" parent="." unique_id=1140509823]
-offset_left = 560.0
-offset_top = 296.0
-offset_right = 600.0
-offset_bottom = 319.0
+[node name="Reload" type="AudioStreamPlayer3D" parent="." unique_id=1199002788]
+stream = ExtResource("8_fsgyu")
+volume_db = -5.0

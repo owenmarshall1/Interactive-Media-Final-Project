@@ -29,8 +29,6 @@ func pickup(result: bool):
 	if result:
 		var item = Item.new()
 		item.scene = item_scene
-		item.name = "Ammo"
-		item.type = "ammo"
 		item.id = "ammo"
 
 		Inventory.add_item(item) # This will now update UI automatically

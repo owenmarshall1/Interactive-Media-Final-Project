@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cypmvq73msfbq"]
+
+[ext_resource type="PackedScene" uid="uid://cvt6swyblek4m" path="res://assets/models/environment/altar/Moon_altar.glb" id="1_xviyx"]
+[ext_resource type="Script" uid="uid://ccwvpyearg1bt" path="res://scenes/Environment/altar.gd" id="2_38dit"]
+[ext_resource type="PackedScene" uid="uid://lelq41vgjxw2" path="res://assets/models/items/WaxingGibbous.glb" id="3_nyn6c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_38dit"]
+size = Vector3(3.276764, 7.6251373, 2.7382813)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nyn6c"]
+size = Vector3(1.1576538, 3.088501, 1)
+
+[node name="Moon_altar" unique_id=718999141 node_paths=PackedStringArray("charm_position") instance=ExtResource("1_xviyx")]
+script = ExtResource("2_38dit")
+charm_position = NodePath("CharmPosition")
+
+[node name="Cube_016" parent="." index="0" unique_id=1094147254]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="Cube_017" parent="." index="1" unique_id=161118183]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.6675968, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=1434652686]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=256423526]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.015783692, 0.4943996, 0)
+shape = SubResource("BoxShape3D_38dit")
+
+[node name="Area3D" type="Area3D" parent="." index="3" unique_id=523674226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.92786574)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=993585204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03237915, 0.4163208, -1.9473889)
+shape = SubResource("BoxShape3D_nyn6c")
+
+[node name="CharmPosition" type="Node3D" parent="." index="4" unique_id=2003997388]
+transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, 0, 1.665, 0.34524956)
+
+[node name="WaxingGibbous" parent="." index="5" unique_id=700995685 instance=ExtResource("3_nyn6c")]
+transform = Transform3D(-0.25, -2.1855694e-08, 9.553427e-16, 0, -1.0927847e-08, -0.25, 2.1855694e-08, -0.25, 1.0927847e-08, 0, 1.667, -0.03)
+visible = false
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

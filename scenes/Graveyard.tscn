@@ -66,9 +66,10 @@ albedo_texture = ExtResource("9_whxyv")
 [sub_resource type="BoxShape3D" id="BoxShape3D_7x5b5"]
 size = Vector3(3.2352295, 4.175415, 310.97803)
 
-[node name="Graveyard" type="Node3D" unique_id=2063104567 node_paths=PackedStringArray("player")]
+[node name="Graveyard" type="Node3D" unique_id=2063104567 node_paths=PackedStringArray("player", "HUD")]
 script = ExtResource("1_vwnn2")
 player = NodePath("Player")
+HUD = NodePath("HUD")
 
 [node name="Player" parent="." unique_id=894090680 instance=ExtResource("1_5r8i4")]
 transform = Transform3D(-0.6996759, 0, 0.7144604, 0, 1, 0, -0.7144604, 0, -0.6996759, 17.322939, 2.0691361, -15.68781)

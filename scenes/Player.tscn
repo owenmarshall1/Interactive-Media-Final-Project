@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cs0eje2vqbvtv" path="res://scenes/Bullet.tscn" id="2_3li8b"]
 [ext_resource type="PackedScene" uid="uid://cly7h0q8evur0" path="res://assets/models/entities/guy.fbx" id="3_3li8b"]
 [ext_resource type="AudioStream" uid="uid://bsw1vymw22pwl" path="res://assets/sounds/gunshot.mp3" id="4_mdl7e"]
+[ext_resource type="AudioStream" uid="uid://ckfttemr40ykw" path="res://assets/sounds/inventory_change.mp3" id="5_qu4a1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6fml"]
 radius = 0.9135742
@@ -36,3 +37,7 @@ current = true
 [node name="GunShot" type="AudioStreamPlayer3D" parent="." unique_id=599512925]
 stream = ExtResource("4_mdl7e")
 volume_db = -20.0
+
+[node name="InventorySwap" type="AudioStreamPlayer3D" parent="." unique_id=1535913733]
+stream = ExtResource("5_qu4a1")
+volume_db = -17.5

@@ -1,16 +1,22 @@
 [gd_scene format=3 uid="uid://bp1vs8xivegqu"]
 
 [ext_resource type="PackedScene" uid="uid://cvm6d1gjjooyj" path="res://scenes/Game/HUD.tscn" id="1_3e3wv"]
-[ext_resource type="Texture2D" uid="uid://cav4a6nigdm83" path="res://assets/textures/moon.jpg" id="2_qn3ms"]
+[ext_resource type="Script" uid="uid://dmritcpeac65r" path="res://scripts/backyard.gd" id="1_o6c56"]
+[ext_resource type="Texture2D" uid="uid://1mor2u54vwmv" path="res://assets/textures/FullMoon2010.jpg.webp" id="2_3e3wv"]
 [ext_resource type="AudioStream" uid="uid://bstxmx8hoy5cq" path="res://assets/sounds/capaholiczsfx-forest-soundscape-night-time-403609.mp3" id="3_p22em"]
 [ext_resource type="PackedScene" uid="uid://b1g6316yxjmga" path="res://scenes/Player.tscn" id="5_su4qm"]
 [ext_resource type="Texture2D" uid="uid://lm27h7g788h3" path="res://assets/textures/o_meshes_Texturelabs_Wood_189S.jpg" id="6_4uceq"]
 [ext_resource type="Texture2D" uid="uid://d37ah5ys5rdx" path="res://assets/textures/grass.jpg" id="7_fmhb6"]
 [ext_resource type="PackedScene" uid="uid://dnyxw0ymgaxi4" path="res://scenes/Environment/Tree.tscn" id="9_5a08s"]
+[ext_resource type="PackedScene" uid="uid://cjtuuisqjwyob" path="res://scenes/Game/FullMoon.tscn" id="9_ckgpg"]
 [ext_resource type="PackedScene" uid="uid://bv55684acr0cr" path="res://scenes/Environment/Fence.tscn" id="10_heru0"]
 [ext_resource type="PackedScene" uid="uid://bq3vrr43qpayy" path="res://scenes/Game/ammo_box.tscn" id="11_lc5yc"]
 [ext_resource type="PackedScene" uid="uid://dyvfnckiyws1r" path="res://scenes/Game/cigarette_pack.tscn" id="12_ckgpg"]
+[ext_resource type="PackedScene" uid="uid://m3hxd2bwr0c8" path="res://scenes/Enemy.tscn" id="12_lc5yc"]
+[ext_resource type="PackedScene" uid="uid://d1wpls4oqurh5" path="res://scenes/Game/WaxingCrescent.tscn" id="13_rr4kc"]
 [ext_resource type="PackedScene" uid="uid://smdnovyepq4q" path="res://scenes/Game/InventoryAmmo.tscn" id="13_tpxj2"]
+[ext_resource type="PackedScene" uid="uid://daa671cnvbrhx" path="res://scenes/Game/WaxingGibbous.tscn" id="14_o6c56"]
+[ext_resource type="PackedScene" uid="uid://cypmvq73msfbq" path="res://scenes/Environment/Altar.tscn" id="15_rr4kc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_su4qm"]
 sky_top_color = Color(0.058672562, 7.314069e-05, 0.14562559, 1)
@@ -38,10 +44,10 @@ volumetric_fog_emission = Color(0.11939367, 0.10946884, 0.09954437, 1)
 volumetric_fog_sky_affect = 0.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dutki"]
-albedo_texture = ExtResource("2_qn3ms")
+albedo_texture = ExtResource("2_3e3wv")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 50.0
+emission_energy_multiplier = 20000.0
 emission_on_uv2 = true
 backlight = Color(0.9384497, 0.9384497, 0.9384497, 1)
 uv1_triplanar_sharpness = 0.00043364873
@@ -70,7 +76,9 @@ albedo_texture = ExtResource("6_4uceq")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpxj2"]
 albedo_texture = ExtResource("6_4uceq")
 
-[node name="Node3D" type="Node3D" unique_id=1221666833]
+[node name="Backyard" type="Node3D" unique_id=1221666833 node_paths=PackedStringArray("HUD")]
+script = ExtResource("1_o6c56")
+HUD = NodePath("HUD")
 
 [node name="HUD" parent="." unique_id=675890851 node_paths=PackedStringArray("player") instance=ExtResource("1_3e3wv")]
 player = NodePath("../Player")
@@ -444,6 +452,39 @@ transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, -129.03624, 0.14860368, 159.0
 [node name="tree99" parent="NavigationRegion3D/Trees" unique_id=1676259118 instance=ExtResource("9_5a08s")]
 transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, -153.62708, 0.14860368, 159.15474)
 
+[node name="tree100" parent="NavigationRegion3D/Trees" unique_id=104222235 instance=ExtResource("9_5a08s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -79.41065, 0.14860082, 93.23913)
+
+[node name="tree101" parent="NavigationRegion3D/Trees" unique_id=1559295342 instance=ExtResource("9_5a08s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -69.26685, 0.14859986, 114.77521)
+
+[node name="tree102" parent="NavigationRegion3D/Trees" unique_id=559932804 instance=ExtResource("9_5a08s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -80.26294, 0.14860082, 105.7749)
+
+[node name="tree103" parent="NavigationRegion3D/Trees" unique_id=657174231 instance=ExtResource("9_5a08s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -58.619415, 0.14860082, 106.08369)
+
+[node name="tree104" parent="NavigationRegion3D/Trees" unique_id=595619937 instance=ExtResource("9_5a08s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -60.54905, 0.14860082, 127.53232)
+
+[node name="tree105" parent="NavigationRegion3D/Trees" unique_id=896755370 instance=ExtResource("9_5a08s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -80.26446, 0.14860082, 124.73078)
+
+[node name="tree106" parent="NavigationRegion3D/Trees" unique_id=1378662355 instance=ExtResource("9_5a08s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -94.63285, 0.14860082, 89.51206)
+
+[node name="tree107" parent="NavigationRegion3D/Trees" unique_id=300774215 instance=ExtResource("9_5a08s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -100.86615, 0.14860082, 109.66484)
+
+[node name="tree108" parent="NavigationRegion3D/Trees" unique_id=910698700 instance=ExtResource("9_5a08s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -92.641556, 0.14860082, 120.46084)
+
+[node name="tree109" parent="NavigationRegion3D/Trees" unique_id=1077458261 instance=ExtResource("9_5a08s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -62.820126, 0.14860082, 84.27944)
+
+[node name="tree110" parent="NavigationRegion3D/Trees" unique_id=1338037940 instance=ExtResource("9_5a08s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -73.68767, 0.14860082, 135.8746)
+
 [node name="Fences" type="Node3D" parent="NavigationRegion3D" unique_id=1304951734]
 
 [node name="Fence" parent="NavigationRegion3D/Fences" unique_id=458761500 instance=ExtResource("10_heru0")]
@@ -665,11 +706,20 @@ transform = Transform3D(-0.0011344387, 0, -0.9999991, 0, 1, 0, 0.9999991, 0, -0.
 [node name="Fence76" parent="NavigationRegion3D/Fences" unique_id=939351110 instance=ExtResource("10_heru0")]
 transform = Transform3D(-0.0011344387, 0, -0.9999991, 0, 1, 0, 0.9999991, 0, -0.0011344387, -112.79592, 3.33786e-06, 80.36904)
 
-[node name="Fence77" parent="NavigationRegion3D/Fences" unique_id=192375730 instance=ExtResource("10_heru0")]
-transform = Transform3D(-0.0011344387, 0, -0.9999991, 0, 1, 0, 0.9999991, 0, -0.0011344387, -118.52869, 3.33786e-06, 80.370384)
+[node name="Fence79" parent="NavigationRegion3D/Fences" unique_id=1118427346 instance=ExtResource("10_heru0")]
+transform = Transform3D(-0.0011344387, 0, -0.9999991, 0, 1, 0, 0.9999991, 0, -0.0011344387, -130.06522, 3.33786e-06, 80.3964)
 
-[node name="Fence78" parent="NavigationRegion3D/Fences" unique_id=1639393626 instance=ExtResource("10_heru0")]
-transform = Transform3D(-0.0011344387, 0, -0.9999991, 0, 1, 0, 0.9999991, 0, -0.0011344387, -124.26343, 3.33786e-06, 80.35604)
+[node name="Fence80" parent="NavigationRegion3D/Fences" unique_id=2057922727 instance=ExtResource("10_heru0")]
+transform = Transform3D(-0.0011344387, 0, -0.9999991, 0, 1, 0, 0.9999991, 0, -0.0011344387, -135.79996, 3.33786e-06, 80.38204)
+
+[node name="Fence81" parent="NavigationRegion3D/Fences" unique_id=964362361 instance=ExtResource("10_heru0")]
+transform = Transform3D(-0.0011344387, 0, -0.9999991, 0, 1, 0, 0.9999991, 0, -0.0011344387, -141.526, 3.33786e-06, 80.3834)
+
+[node name="Fence82" parent="NavigationRegion3D/Fences" unique_id=310145921 instance=ExtResource("10_heru0")]
+transform = Transform3D(-0.0011344387, 0, -0.9999991, 0, 1, 0, 0.9999991, 0, -0.0011344387, -147.26074, 3.33786e-06, 80.36904)
+
+[node name="Fence83" parent="NavigationRegion3D/Fences" unique_id=613121146 instance=ExtResource("10_heru0")]
+transform = Transform3D(-0.0011344387, 0, -0.9999991, 0, 1, 0, 0.9999991, 0, -0.0011344387, -152.99352, 3.33786e-06, 80.370384)
 
 [node name="Items" type="Node3D" parent="NavigationRegion3D" unique_id=1446429338]
 
@@ -689,3 +739,58 @@ transform = Transform3D(0.57819945, 0, -0.81589544, 0, 1, 0, 0.81589544, 0, 0.57
 player = NodePath("../../../Player")
 HUD = NodePath("../../../HUD")
 item_scene = ExtResource("13_tpxj2")
+
+[node name="FullMoon" parent="NavigationRegion3D/Items" unique_id=1140689464 node_paths=PackedStringArray("player", "HUD") instance=ExtResource("9_ckgpg")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -7.159961, 1.0540667, -1.0911976)
+player = NodePath("../../../Player")
+HUD = NodePath("../../../HUD")
+charm_id = "full"
+item_scene = ExtResource("9_ckgpg")
+
+[node name="WaxingCrescent" parent="NavigationRegion3D/Items" unique_id=1040536656 node_paths=PackedStringArray("player", "HUD") instance=ExtResource("13_rr4kc")]
+transform = Transform3D(0.25, 0, 0, 0, 0.24729957, 0.03664593, 0, -0.03664593, 0.24729957, -80.21259, 2.6285057, 125.34038)
+player = NodePath("../../../Player")
+HUD = NodePath("../../../HUD")
+charm_id = "crescent"
+item_scene = ExtResource("13_rr4kc")
+
+[node name="WaxingGibbous" parent="NavigationRegion3D/Items" unique_id=700995685 node_paths=PackedStringArray("player", "HUD") instance=ExtResource("14_o6c56")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.782315, 0)
+player = NodePath("../../../Player")
+HUD = NodePath("../../../HUD")
+charm_id = "gibbous"
+item_scene = ExtResource("14_o6c56")
+
+[node name="Altars" type="Node3D" parent="NavigationRegion3D" unique_id=353319884]
+
+[node name="Moon_altar" parent="NavigationRegion3D/Altars" unique_id=718999141 node_paths=PackedStringArray("player", "HUD", "map") instance=ExtResource("15_rr4kc")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17.760328, 0.96299314, 16.908913)
+player = NodePath("../../../Player")
+HUD = NodePath("../../../HUD")
+correct_charm = "gibbous"
+map = NodePath("../../..")
+
+[node name="Moon_altar2" parent="NavigationRegion3D/Altars" unique_id=360251460 node_paths=PackedStringArray("player", "HUD", "map") instance=ExtResource("15_rr4kc")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17.760328, 0.96299314, 14.405565)
+player = NodePath("../../../Player")
+HUD = NodePath("../../../HUD")
+correct_charm = "full"
+map = NodePath("../../..")
+
+[node name="Moon_altar3" parent="NavigationRegion3D/Altars" unique_id=117332969 node_paths=PackedStringArray("player", "HUD", "map") instance=ExtResource("15_rr4kc")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17.760328, 0.96299314, 11.90061)
+player = NodePath("../../../Player")
+HUD = NodePath("../../../HUD")
+correct_charm = "crescent"
+map = NodePath("../../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="NavigationRegion3D/Altars" unique_id=902713549]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.475928, 2.6731815, 14.387713)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+
+[node name="Enemies" type="Node3D" parent="." unique_id=1830667093]
+
+[node name="Enemy" parent="Enemies" unique_id=1988293381 instance=ExtResource("12_lc5yc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.91636, 1.1775372, 88.69055)
+player_path = NodePath("../../Player")

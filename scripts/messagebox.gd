@@ -9,6 +9,7 @@ signal confirmed(result: bool)
 @onready var inventory = $"../Inventory"
 
 var is_showing := false
+var text_speed = 0.035
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -38,7 +39,10 @@ func show_message(text: String, pause := true):
 	# Typewriter effect
 	for i in text.length():
 		label.text += text[i]
-		await get_tree().create_timer(0.05).timeout
+		if text[i] == "\n":
+			await get_tree().create_timer(0.75).timeout
+		else:
+			await get_tree().create_timer(text_speed).timeout
 		
 		if Input.is_action_just_pressed("interact"):
 			label.text = text
@@ -66,7 +70,10 @@ func show_option(text: String):
 	# Typewriter
 	for i in text.length():
 		label.text += text[i]
-		await get_tree().create_timer(0.05).timeout
+		if text[i] == "\n":
+			await get_tree().create_timer(0.75).timeout
+		else:
+			await get_tree().create_timer(text_speed).timeout
 		
 		if Input.is_action_just_pressed("interact"):
 			label.text = text

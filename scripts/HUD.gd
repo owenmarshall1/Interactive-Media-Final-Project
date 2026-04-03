@@ -10,9 +10,10 @@ var cig_time := 60.0
 @onready var burn_tip := $CigaretteBarContainer/BurnTip
 @onready var smoke = $CigaretteBarContainer/Smoke
 @onready var cig_counter = $CigaretteBarContainer/CigCounter
-@onready var ammo_count = $AmmoCount
+@onready var ammo_count = $Inventory/AmmoCount
 @onready var pause_menu = $PauseMenu
 @onready var test_label = $TestLabel
+@onready var reload_sound = $Reload
 
 var cig_count := 0
 var cig_full_width := 0.0
@@ -28,6 +29,8 @@ func _ready():
 
 func _process(delta):
 	var selected_item = Inventory.get_selected()
+	if Inventory.interaction_locked:
+		return
 	#--- Pause Menu --- 
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = true
@@ -41,6 +44,11 @@ func _process(delta):
 	cig.size.x = cig_full_width * percent
 	burn_tip.position.x = cig.position.x + cig.size.x
 	smoke.position.x = burn_tip.position.x + 5
+	
+	if selected_item.id == "gun" or selected_item.id == "ammo":
+		ammo_count.visible = true
+	else:
+		ammo_count.visible = false
 	
 	if cig_time > 0:
 		#smoke.emitting = true
@@ -56,23 +64,36 @@ func _process(delta):
 		cig_is_empty = true
 		messagebox.show_message("My cigarette ran out.")
 		
-	if Input.is_action_just_pressed("use"):
+	if Input.is_action_just_pressed("use") and not Inventory.interaction_locked:
 		print("used ", selected_item.id)
-		
-		match selected_item.id:
+		match selected_item.id: 
 			"lighter":			
 				if cig_count > 0:
-					messagebox.show_option("Light one?")
+					messagebox.show_option("Light another one?")
 					messagebox.confirmed.connect(relight_cig, CONNECT_ONE_SHOT)
 				else:
 					messagebox.show_message("It looks like i'm out of cigarettes.")
 			"ammo":
 				player.ammo+=12
+				reload_sound.play()
 				Inventory.remove_item(selected_item)
 			
 	ammo_count.text = str(player.ammo)
 	if selected_item != null:
 		test_label.text = selected_item.id
+		
+func _unhandled_input(event):
+	if Inventory.interaction_locked:
+		return  # do nothing
+	if event.is_action_pressed("use"):
+		var selected_item = Inventory.get_selected()
+		match selected_item.id:
+			"full":
+				messagebox.show_message("It's a charm of a full moon.")
+			"crescent":
+				messagebox.show_message("It's a charm of a crescent moon.")
+			"gibbous":
+				messagebox.show_message("It's a charm of a gibbous moon.")
 	
 func relight_cig(result: bool):
 	if result:
