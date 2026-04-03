@@ -22,7 +22,7 @@ func _ready():
 	can_shoot = true  
 
 func _physics_process(delta):
-	is_aiming = Input.is_action_pressed("aim")
+	is_aiming = Input.is_action_pressed("aim") and Inventory.get_selected().id == "gun"
 	# --- Movement Input ---
 	if is_aiming:
 		velocity.x = 0
@@ -64,7 +64,7 @@ func _physics_process(delta):
 	camera.rotation.x = camera_rotation
 
 	# --- Shoot ---
-	if can_shoot and is_aiming and Input.is_action_just_pressed("shoot") and ammo > 0:
+	if is_aiming and Input.is_action_just_pressed("shoot") and ammo > 0 and can_shoot:
 		shoot()
 
 	# --- Move ---

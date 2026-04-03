@@ -6,6 +6,7 @@ var selected_index := 0
 signal inventory_changed	
 
 func _ready():
+	#auto add gun
 	set_process_unhandled_input(true)
 	var gun_item = Item.new()
 	gun_item.name = "Gun"
@@ -14,6 +15,15 @@ func _ready():
 	# assign the gun 3D scene
 	gun_item.scene = preload("res://scenes/Game/Gun.tscn")
 	add_item(gun_item)
+	
+	#auto add lighter
+	var lighter_item = Item.new()
+	lighter_item.name = "Lighter"
+	lighter_item.type = "lighter"
+	lighter_item.id = "lighter"
+	# assign the gun 3D scene
+	lighter_item.scene = preload("res://scenes/Game/InventoryLighter.tscn")
+	add_item(lighter_item)
 	
 	selected_index = 0
 	emit_signal("inventory_changed")
@@ -45,5 +55,5 @@ func next_item():
 func prev_item():
 	if items.is_empty():
 		return
-	selected_index = (selected_index - 1) % items.size()
+	selected_index = (selected_index - 1 + items.size()) % items.size()
 	emit_signal("inventory_changed")

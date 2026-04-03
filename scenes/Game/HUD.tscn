@@ -72,3 +72,16 @@ text = "0"
 [node name="PauseMenu" parent="." unique_id=1590541772 instance=ExtResource("6_v6ord")]
 
 [node name="Inventory" parent="." unique_id=1711317546 instance=ExtResource("7_5ismn")]
+
+[node name="TestLabel" type="Label" parent="." unique_id=624857651]
+offset_left = 50.0
+offset_top = 270.0
+offset_right = 188.0
+offset_bottom = 351.0
+text = "test"
+
+[node name="AmmoCount" type="Label" parent="." unique_id=1140509823]
+offset_left = 560.0
+offset_top = 296.0
+offset_right = 600.0
+offset_bottom = 319.0

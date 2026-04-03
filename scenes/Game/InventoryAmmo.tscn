@@ -5,4 +5,7 @@
 [node name="Node3D" type="Node3D" unique_id=1838190828]
 
 [node name="ammo_box" parent="." unique_id=1858306315 instance=ExtResource("1_kem8c")]
-transform = Transform3D(0.9659258, -1.489429e-09, -0.25881907, -0.25881907, -1.1313341e-08, -0.9659258, -1.489429e-09, 1, -1.1313341e-08, 0, 0, 2.5)
+transform = Transform3D(0.9659258, -1.489429e-09, -0.25881907, -0.25881907, -1.1313341e-08, -0.9659258, -1.489429e-09, 1, -1.1313341e-08, 0, 0, 2.3)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=325107150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)

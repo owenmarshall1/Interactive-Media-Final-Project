@@ -6,17 +6,18 @@ var cig_time := 60.0
 @export var player : Node
 
 @onready var messagebox = $Messagebox
-
 @onready var cig := $CigaretteBarContainer/CigMask
 @onready var burn_tip := $CigaretteBarContainer/BurnTip
 @onready var smoke = $CigaretteBarContainer/Smoke
 @onready var cig_counter = $CigaretteBarContainer/CigCounter
 @onready var ammo_count = $AmmoCount
 @onready var pause_menu = $PauseMenu
+@onready var test_label = $TestLabel
 
 var cig_count := 0
 var cig_full_width := 0.0
 var cig_is_empty := false
+
 
 
 func _ready():
@@ -26,6 +27,7 @@ func _ready():
 	
 
 func _process(delta):
+	var selected_item = Inventory.get_selected()
 	#--- Pause Menu --- 
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = true
@@ -54,19 +56,24 @@ func _process(delta):
 		cig_is_empty = true
 		messagebox.show_message("My cigarette ran out.")
 		
-	if Input.is_action_just_pressed("relight"):
-		if cig_count > 0:
-			messagebox.show_option("Light one?")
-			messagebox.confirmed.connect(relight_cig, CONNECT_ONE_SHOT)
-		else:
-			messagebox.show_message("It looks like i'm out of cigarettes.")
+	if Input.is_action_just_pressed("use"):
+		print("used ", selected_item.id)
+		
+		match selected_item.id:
+			"lighter":			
+				if cig_count > 0:
+					messagebox.show_option("Light one?")
+					messagebox.confirmed.connect(relight_cig, CONNECT_ONE_SHOT)
+				else:
+					messagebox.show_message("It looks like i'm out of cigarettes.")
+			"ammo":
+				player.ammo+=12
+				Inventory.remove_item(selected_item)
 			
 	ammo_count.text = str(player.ammo)
-		
+	if selected_item != null:
+		test_label.text = selected_item.id
 	
-func take_damage(_amount):
-	return
-
 func relight_cig(result: bool):
 	if result:
 		cig_time = max_cig_time

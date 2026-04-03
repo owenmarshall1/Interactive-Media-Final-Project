@@ -1,11 +1,8 @@
 [gd_scene format=3 uid="uid://bp1vs8xivegqu"]
 
+[ext_resource type="PackedScene" uid="uid://cvm6d1gjjooyj" path="res://scenes/Game/HUD.tscn" id="1_3e3wv"]
 [ext_resource type="Texture2D" uid="uid://cav4a6nigdm83" path="res://assets/textures/moon.jpg" id="2_qn3ms"]
 [ext_resource type="AudioStream" uid="uid://bstxmx8hoy5cq" path="res://assets/sounds/capaholiczsfx-forest-soundscape-night-time-403609.mp3" id="3_p22em"]
-[ext_resource type="PackedScene" uid="uid://c6u72gv2nahj8" path="res://scenes/Game/inventory.tscn" id="4_ckgpg"]
-[ext_resource type="PackedScene" uid="uid://dgv6ln0hwdb2k" path="res://scenes/Game/PauseMenu.tscn" id="4_dutki"]
-[ext_resource type="PackedScene" uid="uid://d06iaa88t6bax" path="res://scenes/HUD.tscn" id="4_su4qm"]
-[ext_resource type="PackedScene" uid="uid://c43aprpo2gvnm" path="res://scenes/Game/Messagebox.tscn" id="5_fmhb6"]
 [ext_resource type="PackedScene" uid="uid://b1g6316yxjmga" path="res://scenes/Player.tscn" id="5_su4qm"]
 [ext_resource type="Texture2D" uid="uid://lm27h7g788h3" path="res://assets/textures/o_meshes_Texturelabs_Wood_189S.jpg" id="6_4uceq"]
 [ext_resource type="Texture2D" uid="uid://d37ah5ys5rdx" path="res://assets/textures/grass.jpg" id="7_fmhb6"]
@@ -14,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bq3vrr43qpayy" path="res://scenes/Game/ammo_box.tscn" id="11_lc5yc"]
 [ext_resource type="PackedScene" uid="uid://dyvfnckiyws1r" path="res://scenes/Game/cigarette_pack.tscn" id="12_ckgpg"]
 [ext_resource type="PackedScene" uid="uid://smdnovyepq4q" path="res://scenes/Game/InventoryAmmo.tscn" id="13_tpxj2"]
-[ext_resource type="PackedScene" uid="uid://bg8whysixwonl" path="res://scenes/Game/InventoryCig.tscn" id="14_v1vex"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_su4qm"]
 sky_top_color = Color(0.058672562, 7.314069e-05, 0.14562559, 1)
@@ -76,6 +72,9 @@ albedo_texture = ExtResource("6_4uceq")
 
 [node name="Node3D" type="Node3D" unique_id=1221666833]
 
+[node name="HUD" parent="." unique_id=675890851 node_paths=PackedStringArray("player") instance=ExtResource("1_3e3wv")]
+player = NodePath("../Player")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1374509399]
 environment = SubResource("Environment_4uceq")
 
@@ -99,15 +98,6 @@ volume_db = -7.5
 max_db = -2.0
 autoplay = true
 parameters/looping = true
-
-[node name="HUD" parent="." unique_id=675890851 node_paths=PackedStringArray("player") instance=ExtResource("4_su4qm")]
-player = NodePath("../Player")
-
-[node name="Inventory" parent="HUD" unique_id=1711317546 instance=ExtResource("4_ckgpg")]
-
-[node name="PauseMenu" parent="HUD" unique_id=1590541772 instance=ExtResource("4_dutki")]
-
-[node name="Messagebox2" parent="HUD" unique_id=804070227 instance=ExtResource("5_fmhb6")]
 
 [node name="Player" parent="." unique_id=894090680 instance=ExtResource("5_su4qm")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 13.819483, 2.9355078, -14.810124)
@@ -683,21 +673,19 @@ transform = Transform3D(-0.0011344387, 0, -0.9999991, 0, 1, 0, 0.9999991, 0, -0.
 
 [node name="Items" type="Node3D" parent="NavigationRegion3D" unique_id=1446429338]
 
-[node name="ammo_box" parent="NavigationRegion3D/Items" unique_id=1858306315 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("11_lc5yc")]
+[node name="ammo_box" parent="NavigationRegion3D/Items" unique_id=1858306315 node_paths=PackedStringArray("player", "HUD") instance=ExtResource("11_lc5yc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.817453, 0.7632525, -8.892857)
 player = NodePath("../../../Player")
-messagebox = NodePath("../../../HUD/Messagebox2")
+HUD = NodePath("../../../HUD")
 item_scene = ExtResource("13_tpxj2")
 
-[node name="cigarette_pack" parent="NavigationRegion3D/Items" unique_id=412636089 node_paths=PackedStringArray("HUD", "player", "messagebox") instance=ExtResource("12_ckgpg")]
+[node name="cigarette_pack" parent="NavigationRegion3D/Items" unique_id=412636089 node_paths=PackedStringArray("HUD", "player") instance=ExtResource("12_ckgpg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.294825, 0.66730976, -8.452014)
 HUD = NodePath("../../../HUD")
 player = NodePath("../../../Player")
-messagebox = NodePath("../../../HUD/Messagebox2")
-item_scene = ExtResource("14_v1vex")
 
-[node name="ammo_box2" parent="NavigationRegion3D/Items" unique_id=31128818 node_paths=PackedStringArray("player", "messagebox") instance=ExtResource("11_lc5yc")]
+[node name="ammo_box2" parent="NavigationRegion3D/Items" unique_id=31128818 node_paths=PackedStringArray("player", "HUD") instance=ExtResource("11_lc5yc")]
 transform = Transform3D(0.57819945, 0, -0.81589544, 0, 1, 0, 0.81589544, 0, 0.57819945, -12.011649, 0.109926224, -6.4558916)
 player = NodePath("../../../Player")
-messagebox = NodePath("../../../HUD/Messagebox2")
+HUD = NodePath("../../../HUD")
 item_scene = ExtResource("13_tpxj2")

@@ -13,6 +13,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	page_sound.process_mode = Node.PROCESS_MODE_ALWAYS
 	poster.visible = false
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
