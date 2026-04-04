@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dgv6ln0hwdb2k"]
 
 [ext_resource type="Script" uid="uid://4m3n03cm6p67" path="res://scripts/pause_menu.gd" id="1_cpm1s"]
+[ext_resource type="PackedScene" uid="uid://oehehnau6sdg" path="res://scenes/Game/controls.tscn" id="2_h2k4b"]
 
 [sub_resource type="Animation" id="Animation_2w1r8"]
 resource_name = "RESET"
@@ -71,7 +72,7 @@ z_index = 1
 layout_mode = 2
 text = "Return to Menu"
 
-[node name="Button" type="Button" parent="Buttons" unique_id=628577949]
+[node name="Controls" type="Button" parent="Buttons" unique_id=628577949]
 z_index = 1
 layout_mode = 2
 text = "Options"
@@ -106,6 +107,12 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="scene_transition" unique_id=966469327]
 libraries/ = SubResource("AnimationLibrary_cpm1s")
 
+[node name="Controls" parent="." unique_id=1874020681 instance=ExtResource("2_h2k4b")]
+visible = false
+z_index = 11
+layout_mode = 1
+
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Buttons/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Buttons/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]

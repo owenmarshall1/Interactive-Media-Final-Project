@@ -15,7 +15,10 @@ radius = 0.2
 
 [node name="Player" type="CharacterBody3D" unique_id=894090680]
 script = ExtResource("1_p0vlq")
+speed = null
+gravity = null
 bullet_scene = ExtResource("2_3li8b")
+shoot_cooldown = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=905257438]
 transform = Transform3D(-0.9999998, 0, -8.742276e-08, 0, 0.9999998, 0, 8.742276e-08, 0, -0.9999998, -0.017144628, -0.81018466, -0.21665907)

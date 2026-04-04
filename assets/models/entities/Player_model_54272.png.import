@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbdj31tyd35js"
-path.s3tc="res://.godot/imported/smoke.png-31c73da528b34b80f88eaacaca14fecb.s3tc.ctex"
+uid="uid://b5vp04a5s573q"
+path.s3tc="res://.godot/imported/Player_model_54272.png-a839b9ca3375090f0457d5d7717d6f76.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "39d379cae21ef9e73b4c7e5ea067aa83"
+}
 
 [deps]
 
-source_file="res://assets/textures/smoke.png"
-dest_files=["res://.godot/imported/smoke.png-31c73da528b34b80f88eaacaca14fecb.s3tc.ctex"]
+source_file="res://assets/models/entities/Player_model_54272.png"
+dest_files=["res://.godot/imported/Player_model_54272.png-a839b9ca3375090f0457d5d7717d6f76.s3tc.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cypmvq73msfbq"]
 
 [ext_resource type="PackedScene" uid="uid://cvt6swyblek4m" path="res://assets/models/environment/altar/Moon_altar.glb" id="1_xviyx"]
-[ext_resource type="Script" uid="uid://ccwvpyearg1bt" path="res://scenes/Environment/altar.gd" id="2_38dit"]
+[ext_resource type="Script" uid="uid://ccwvpyearg1bt" path="res://scripts/altar.gd" id="2_38dit"]
 [ext_resource type="PackedScene" uid="uid://lelq41vgjxw2" path="res://assets/models/items/WaxingGibbous.glb" id="3_nyn6c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_38dit"]

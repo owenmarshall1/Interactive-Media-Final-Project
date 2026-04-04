@@ -3,6 +3,8 @@ extends Control
 @onready var pause_menu = $"."
 @onready var scene_transistion = $scene_transition/AnimationPlayer
 
+var controls_showing = false
+
 const MENU = preload("res://scenes/Main_menu.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,7 +13,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if controls_showing and Input.is_action_just_pressed("pause"):
+		$Buttons/Resume.grab_focus()
+		$Controls.visible = false
+		controls_showing = false
 
 
 func _on_resume_pressed() -> void:
@@ -30,3 +35,8 @@ func _on_return_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_controls_pressed() -> void:
+	controls_showing = true
+	$Controls.show()

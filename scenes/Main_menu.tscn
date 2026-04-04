@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d37ah5ys5rdx" path="res://assets/textures/grass.jpg" id="4_k7amj"]
 [ext_resource type="PackedScene" uid="uid://bv55684acr0cr" path="res://scenes/Environment/Fence.tscn" id="5_0mtrp"]
 [ext_resource type="AudioStream" uid="uid://dysynlr03bcq8" path="res://assets/sounds/main_menu.wav" id="5_3tmrh"]
+[ext_resource type="PackedScene" uid="uid://oehehnau6sdg" path="res://scenes/Game/controls.tscn" id="7_cvwki"]
 [ext_resource type="Script" uid="uid://hji43aj2yo5o" path="res://scripts/mainmenu.gd" id="10_m5x4w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q6ro2"]
@@ -1000,32 +1001,6 @@ volume_db = -7.5
 max_db = -2.0
 autoplay = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1190664250]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -115.5
-offset_top = -150.0
-offset_right = 115.5
-offset_bottom = -49.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("10_m5x4w")
-
-[node name="start" type="Button" parent="VBoxContainer" unique_id=4438513]
-layout_mode = 2
-text = "Start"
-
-[node name="options" type="Button" parent="VBoxContainer" unique_id=1348276269]
-layout_mode = 2
-text = "Options"
-
-[node name="quit" type="Button" parent="VBoxContainer" unique_id=572611283]
-layout_mode = 2
-text = "Quit"
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1611580479]
 transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 20.284348, 4.524086, -18.718946)
 
@@ -1044,5 +1019,43 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="scene_transition" unique_id=1456297659]
 libraries/ = SubResource("AnimationLibrary_m5x4w")
 
-[connection signal="pressed" from="VBoxContainer/start" to="VBoxContainer" method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/quit" to="VBoxContainer" method="_on_quit_pressed"]
+[node name="Menu" type="Control" parent="." unique_id=2126086844]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu" unique_id=1190664250]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 184.5
+offset_top = 286.0
+offset_right = 415.5
+offset_bottom = 391.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("10_m5x4w")
+
+[node name="start" type="Button" parent="Menu/VBoxContainer" unique_id=4438513]
+layout_mode = 2
+text = "Start"
+
+[node name="options" type="Button" parent="Menu/VBoxContainer" unique_id=1348276269]
+layout_mode = 2
+text = "Options"
+
+[node name="quit" type="Button" parent="Menu/VBoxContainer" unique_id=572611283]
+layout_mode = 2
+text = "Quit"
+
+[node name="Controls" parent="Menu" unique_id=1874020681 instance=ExtResource("7_cvwki")]
+visible = false
+layout_mode = 0
+
+[connection signal="pressed" from="Menu/VBoxContainer/start" to="Menu/VBoxContainer" method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/options" to="Menu/VBoxContainer" method="_on_options_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/quit" to="Menu/VBoxContainer" method="_on_quit_pressed"]

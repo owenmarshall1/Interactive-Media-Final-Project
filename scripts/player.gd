@@ -1,8 +1,7 @@
 # Player.gd
 extends CharacterBody3D
 
-@export var speed := 5.0
-@export var controller_sensitivity := 2.0
+@export var speed := 50.0
 @export var gravity := 9.8
 
 @export var bullet_scene: PackedScene
@@ -12,6 +11,7 @@ extends CharacterBody3D
 @onready var camera = $SpringArm3D/Camera3D
 @onready var gunshot = $GunShot
 @onready var inventory_swap = $InventorySwap
+@onready var player_model = $PlayerModel
 
 var camera_clamp := 0.20  # max vertical tilt in radians
 var camera_rotation := 0.0
@@ -40,7 +40,7 @@ func _physics_process(delta):
 		var direction = transform.basis.x * input_dir.x + transform.basis.z * input_dir.y
 		velocity.x = direction.x * speed * input_strength
 		velocity.z = direction.z * speed * input_strength
-
+	handle_movement_animation(velocity)
 	# --- Gravity ---
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -58,13 +58,11 @@ func _physics_process(delta):
 
 	# --- Controller Horizontal Look ---
 	var look_input_x = Input.get_action_strength("look_right") - Input.get_action_strength("look_left")
-	rotate_y(-look_input_x * controller_sensitivity * delta)
+	rotate_y(-look_input_x * 2 * PlayerSettings.sensitivity * delta)
 
 	# --- Vertical Camera Look ---
 	var look_input_y = Input.get_action_strength("look_down") - Input.get_action_strength("look_up")
-	camera_rotation -= look_input_y * controller_sensitivity/4 * delta
-	camera_rotation = clamp(camera_rotation, -camera_clamp, camera_clamp)
-	camera.rotation.x = camera_rotation
+	camera_rotation -= look_input_y * 2 / 4 * PlayerSettings.sensitivity * delta
 
 	# --- Shoot ---
 	if is_aiming and Input.is_action_just_pressed("shoot") and ammo > 0 and can_shoot:
@@ -72,6 +70,7 @@ func _physics_process(delta):
 
 	# --- Move ---
 	move_and_slide()
+	
 	
 func shoot():
 	ammo-=1
@@ -90,3 +89,12 @@ func shoot():
 
 	await get_tree().create_timer(shoot_cooldown).timeout
 	can_shoot = true
+	
+func handle_movement_animation(v):
+	var animation_player = player_model.get_node("AnimationPlayer")
+	if is_aiming:
+		animation_player.play("Aim")
+	elif !velocity:
+		animation_player.play("mixamo_com")
+	elif velocity:
+		animation_player.play("Walk")

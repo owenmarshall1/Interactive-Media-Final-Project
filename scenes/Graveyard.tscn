@@ -1303,7 +1303,6 @@ shape = SubResource("BoxShape3D_7x5b5")
 player = NodePath("../Player")
 
 [node name="HintPoster" type="Control" parent="HUD" unique_id=1387141234]
-z_index = -3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

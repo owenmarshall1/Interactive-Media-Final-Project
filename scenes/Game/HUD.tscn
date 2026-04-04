@@ -71,6 +71,7 @@ text = "0"
 [node name="Messagebox" parent="." unique_id=804070227 instance=ExtResource("5_8cuoo")]
 
 [node name="PauseMenu" parent="." unique_id=1590541772 instance=ExtResource("6_v6ord")]
+z_index = 3
 
 [node name="Inventory" parent="." unique_id=1711317546 instance=ExtResource("7_5ismn")]
 

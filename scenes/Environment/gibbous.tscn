@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://r7jrioik7ifq"]
+
+[ext_resource type="PackedScene" uid="uid://bfqelolcuuaja" path="res://assets/models/environment/moon_cutouts/Gibbous.glb" id="1_jsi68"]
+[ext_resource type="Texture2D" uid="uid://bd00ff6a6dhqb" path="res://assets/textures/eyes.jpg" id="2_g45q5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_exc7n"]
+albedo_texture = ExtResource("2_g45q5")
+uv1_scale = Vector3(2, 2, 2)
+
+[node name="Gibbous" unique_id=1174652416 instance=ExtResource("1_jsi68")]
+
+[node name="Cylinder" parent="." index="0" unique_id=60295697]
+material_override = SubResource("StandardMaterial3D_exc7n")

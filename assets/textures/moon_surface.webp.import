@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbdj31tyd35js"
-path.s3tc="res://.godot/imported/smoke.png-31c73da528b34b80f88eaacaca14fecb.s3tc.ctex"
+uid="uid://bncb5crnden6c"
+path.s3tc="res://.godot/imported/moon_surface.webp-35e3dea14f90dd14b7ffdea5fb201219.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/smoke.png"
-dest_files=["res://.godot/imported/smoke.png-31c73da528b34b80f88eaacaca14fecb.s3tc.ctex"]
+source_file="res://assets/textures/moon_surface.webp"
+dest_files=["res://.godot/imported/moon_surface.webp-35e3dea14f90dd14b7ffdea5fb201219.s3tc.ctex"]
 
 [params]
 

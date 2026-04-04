@@ -7,7 +7,7 @@ extends Node3D
 @export var map: Node3D
 
 var in_contact = false
-var can_interact = true
+var can_interact = true 
 var current_charm: Item = null
 var current_charm_instance: Node3D = null
 
@@ -37,7 +37,6 @@ func _unhandled_input(_event):
 			HUD.messagebox.show_message("This doesn't fit.")
 			await_message_close()
 		elif current_charm:
-			# Swap: confirm retrieval first
 			HUD.messagebox.show_option("There is a " + current_charm.id + " moon charm here.\nDo you want to take it back and replace it?")
 			HUD.messagebox.confirmed.connect(swap_charm, CONNECT_ONE_SHOT)
 		else: 
@@ -51,7 +50,6 @@ func swap_charm(result: bool):
 		var item_to_place = Inventory.get_selected()
 		
 		if current_charm:
-			# Decrement if the outgoing charm was correct
 			if current_charm.id == correct_charm:
 				map.correct_charm_count -= 1
 				print("correct count: " + str(map.correct_charm_count))
@@ -100,7 +98,6 @@ func place_charm(result: bool):
 
 func retrieve_charm(result: bool):
 	if result and current_charm:
-		# Only decrement if confirmed
 		if current_charm.id == correct_charm:
 			map.correct_charm_count -= 1
 			print("correct count: " + str(map.correct_charm_count))

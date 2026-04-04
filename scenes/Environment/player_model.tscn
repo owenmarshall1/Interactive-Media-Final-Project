@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bm8wt5a604by3"]
+
+[ext_resource type="PackedScene" uid="uid://14yflxkxsq8o" path="res://assets/models/entities/Player_model.glb" id="1_3nyf4"]
+
+[node name="Player_model" unique_id=1265123665 instance=ExtResource("1_3nyf4")]
+
+[node name="Male_hair" parent="." index="0" unique_id=1570696861]
+transform = Transform3D(0.040644746, 0, 0, 0, 0, -0.040172756, 0, 0.040644746, 0, 0, -5.415481, 0.2844496)
