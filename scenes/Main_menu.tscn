@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bv55684acr0cr" path="res://scenes/Environment/Fence.tscn" id="5_0mtrp"]
 [ext_resource type="AudioStream" uid="uid://dysynlr03bcq8" path="res://assets/sounds/main_menu.wav" id="5_3tmrh"]
 [ext_resource type="PackedScene" uid="uid://oehehnau6sdg" path="res://scenes/Game/controls.tscn" id="7_cvwki"]
+[ext_resource type="Texture2D" uid="uid://d1oiq14axv1sr" path="res://assets/textures/title.png" id="8_2w1r8"]
 [ext_resource type="Script" uid="uid://hji43aj2yo5o" path="res://scripts/mainmenu.gd" id="10_m5x4w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q6ro2"]
@@ -1046,7 +1047,7 @@ text = "Start"
 
 [node name="options" type="Button" parent="Menu/VBoxContainer" unique_id=1348276269]
 layout_mode = 2
-text = "Options"
+text = "Controls"
 
 [node name="quit" type="Button" parent="Menu/VBoxContainer" unique_id=572611283]
 layout_mode = 2
@@ -1054,7 +1055,22 @@ text = "Quit"
 
 [node name="Controls" parent="Menu" unique_id=1874020681 instance=ExtResource("7_cvwki")]
 visible = false
+z_index = 9
 layout_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Menu" unique_id=1367627733]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -67.0
+offset_right = 637.0
+offset_bottom = 448.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2w1r8")
+expand_mode = 1
 
 [connection signal="pressed" from="Menu/VBoxContainer/start" to="Menu/VBoxContainer" method="_on_start_button_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/options" to="Menu/VBoxContainer" method="_on_options_pressed"]

@@ -91,6 +91,6 @@ offset_right = 188.0
 offset_bottom = 351.0
 text = "test"
 
-[node name="Reload" type="AudioStreamPlayer3D" parent="." unique_id=1199002788]
+[node name="Reload" type="AudioStreamPlayer2D" parent="." unique_id=964506433]
 stream = ExtResource("8_fsgyu")
 volume_db = -5.0

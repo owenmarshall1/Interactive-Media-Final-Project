@@ -1466,7 +1466,7 @@ parameters/looping = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.041900635, 3.5799255, -0.0012512207)
 
 [node name="Enemy" parent="Enemies" unique_id=1784765703 instance=ExtResource("4_mskxn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.204, -2.5605607, 72.0711)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43434334, -2.5605626, -0.095327854)
 player_path = NodePath("../../Player")
 
 [node name="Enemy2" parent="Enemies" unique_id=1988293381 instance=ExtResource("4_mskxn")]

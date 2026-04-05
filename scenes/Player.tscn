@@ -5,6 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://bsw1vymw22pwl" path="res://assets/sounds/gunshot.mp3" id="4_mdl7e"]
 [ext_resource type="PackedScene" uid="uid://dec8oet5dh4nw" path="res://scenes/Game/player_model.tscn" id="5_70d11"]
 [ext_resource type="AudioStream" uid="uid://ckfttemr40ykw" path="res://assets/sounds/inventory_change.mp3" id="5_qu4a1"]
+[ext_resource type="AudioStream" uid="uid://d31isj3sgrcnk" path="res://assets/sounds/grass_step.mp3" id="6_70d11"]
+[ext_resource type="AudioStream" uid="uid://cop1b1h04p8mi" path="res://assets/sounds/relight.mp3" id="7_cw2d6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6fml"]
 radius = 0.9135742
@@ -40,4 +42,12 @@ stream = ExtResource("5_qu4a1")
 volume_db = -17.5
 
 [node name="PlayerModel" parent="." unique_id=1335453184 instance=ExtResource("5_70d11")]
-transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 0, -2.4408505, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -2.4408505, 0)
+
+[node name="FootstepGrass" type="AudioStreamPlayer3D" parent="." unique_id=328023281]
+stream = ExtResource("6_70d11")
+volume_db = -12.5
+
+[node name="RelightSound" type="AudioStreamPlayer3D" parent="." unique_id=306849978]
+stream = ExtResource("7_cw2d6")
+volume_db = -5.0

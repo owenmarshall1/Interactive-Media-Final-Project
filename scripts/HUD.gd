@@ -25,8 +25,8 @@ func _ready():
 	# Store full widths for scaling
 	pause_menu.visible = false
 	cig_full_width = cig.size.x
-	
-
+	cig_count = GameState.cig_count
+	cig_time = GameState.cig_time
 func _process(delta):
 	var selected_item = Inventory.get_selected()
 	if Inventory.interaction_locked:
@@ -99,4 +99,5 @@ func relight_cig(result: bool):
 	if result:
 		cig_time = max_cig_time
 		smoke.visible = true
-		cig_count-=1
+		cig_count -= 1
+		player.play_relight_animation()

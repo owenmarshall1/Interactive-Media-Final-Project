@@ -34,8 +34,9 @@ volumetric_fog_sky_affect = 0.75
 [node name="Moon" type="Node3D" unique_id=711309758]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1397176740]
-transform = Transform3D(1000, 0, 0, 0, 0.1, 0, 0, 0, 1000, -0.7687216, 0.24044013, -0.5358238)
+transform = Transform3D(1000, 0, 0, 0, 0.1, 0, 0, 0, 1000, -0.7687216, -231.08948, -0.5358238)
 use_collision = true
+size = Vector3(1, 4627.5986, 1)
 material = SubResource("StandardMaterial3D_4leel")
 
 [node name="Player" parent="." unique_id=894090680 instance=ExtResource("2_c3pl7")]

@@ -2,7 +2,6 @@ extends Node3D
 
 @export var HUD: CanvasLayer
 @export var player: Node3D
-@export var camera: Camera3D
 
 @onready var open_door_animation = $Cave/Camera3D/DoorOpen
 @onready var cutscene_camera = $Cave/Camera3D
@@ -35,12 +34,14 @@ func _process(_delta: float) -> void:
 		player_camera.v_offset = 0.0
 	
 	#Charm puzzle and cutscene
-	if correct_charm_count >= 1 and not cave_unlocked:
+	if correct_charm_count >= 3 and not cave_unlocked:
 		cutscene_camera.current = true
 		HUD.visible = false
+		player.can_move = false
 		open_door_animation.play("open")
 		await open_door_animation.animation_finished
 		await get_tree().process_frame  
+		player.can_move = true
 		scene_fade.visible = false
 		HUD.visible = true
 		cutscene_camera.current = false
@@ -48,6 +49,10 @@ func _process(_delta: float) -> void:
 		
 func _on_lightbeam_entered(body: Node3D) -> void:
 	if body == player:
+		GameState.ammo = player.ammo
+		GameState.cig_count = HUD.cig_count
+		GameState.cig_time = HUD.cig_time
+		scene_transition.play("Fade")
 		scene_transition.play("Fade")
 		shaking = true
 		shake_strength = 0.5

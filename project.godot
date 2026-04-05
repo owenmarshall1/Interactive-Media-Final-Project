@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GameState="*uid://cw000woih3u1r"
 Inventory="*uid://cr8vxrmapsh0i"
 PlayerSettings="*uid://bt88f53wgxu8m"
 

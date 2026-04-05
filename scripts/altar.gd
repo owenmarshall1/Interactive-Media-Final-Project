@@ -5,6 +5,7 @@ extends Node3D
 @export var correct_charm: String
 @export var charm_position: Node3D
 @export var map: Node3D
+@export var altar_id: String
 
 var in_contact = false
 var can_interact = true 
@@ -72,7 +73,6 @@ func place_charm_item(item: Item):
 		
 	Inventory.remove_item(item)
 	current_charm = item
-	
 	if current_charm_instance:
 		current_charm_instance.queue_free()
 		
