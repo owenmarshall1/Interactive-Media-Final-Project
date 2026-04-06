@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://dgv6ln0hwdb2k"]
+
+[ext_resource type="Script" uid="uid://4m3n03cm6p67" path="res://scripts/pause_menu.gd" id="1_cpm1s"]
+[ext_resource type="PackedScene" uid="uid://oehehnau6sdg" path="res://scenes/Game/controls.tscn" id="2_h2k4b"]
+
+[sub_resource type="Animation" id="Animation_2w1r8"]
+resource_name = "RESET"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dissolve:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q4q5n"]
+resource_name = "dissolve"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dissolve:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cpm1s"]
+_data = {
+&"RESET": SubResource("Animation_2w1r8"),
+&"dissolve": SubResource("Animation_q4q5n")
+}
+
+[node name="PauseMenu" type="Control" unique_id=1590541772]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cpm1s")
+
+[node name="Buttons" type="VBoxContainer" parent="." unique_id=710494434]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 235.0
+offset_top = 167.5
+offset_right = 365.0
+offset_bottom = 272.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="Buttons" unique_id=1721188338]
+z_index = 1
+layout_mode = 2
+text = "Resume"
+
+[node name="Return" type="Button" parent="Buttons" unique_id=808786689]
+z_index = 1
+layout_mode = 2
+text = "Return to Menu"
+
+[node name="Controls" type="Button" parent="Buttons" unique_id=628577949]
+z_index = 1
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="Buttons" unique_id=474819415]
+z_index = 1
+layout_mode = 2
+text = "Quit Game"
+
+[node name="Panel" type="Panel" parent="." unique_id=1133104895]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.394
+anchor_bottom = 1.526
+offset_right = 594.24
+offset_bottom = 428.96
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="scene_transition" type="CanvasLayer" parent="." unique_id=1831200607]
+
+[node name="dissolve" type="ColorRect" parent="scene_transition" unique_id=1058057415]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="scene_transition" unique_id=966469327]
+libraries/ = SubResource("AnimationLibrary_cpm1s")
+
+[node name="Controls" parent="." unique_id=1874020681 instance=ExtResource("2_h2k4b")]
+visible = false
+z_index = 11
+layout_mode = 1
+
+[connection signal="pressed" from="Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Buttons/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Buttons/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]

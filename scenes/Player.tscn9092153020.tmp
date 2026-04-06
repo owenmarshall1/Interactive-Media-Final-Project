@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b1g6316yxjmga"]
+
+[ext_resource type="Script" uid="uid://bq5ucf7w01kek" path="res://scripts/player.gd" id="1_p0vlq"]
+[ext_resource type="PackedScene" uid="uid://cs0eje2vqbvtv" path="res://scenes/Bullet.tscn" id="2_3li8b"]
+[ext_resource type="AudioStream" uid="uid://bsw1vymw22pwl" path="res://assets/sounds/gunshot.mp3" id="4_mdl7e"]
+[ext_resource type="PackedScene" uid="uid://dec8oet5dh4nw" path="res://scenes/Game/player_model.tscn" id="5_70d11"]
+[ext_resource type="AudioStream" uid="uid://ckfttemr40ykw" path="res://assets/sounds/inventory_change.mp3" id="5_qu4a1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6fml"]
+radius = 0.9135742
+height = 3.046814
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3li8b"]
+radius = 0.2
+
+[node name="Player" type="CharacterBody3D" unique_id=894090680]
+script = ExtResource("1_p0vlq")
+speed = null
+gravity = null
+bullet_scene = ExtResource("2_3li8b")
+shoot_cooldown = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=905257438]
+transform = Transform3D(-0.9999998, 0, -8.742276e-08, 0, 0.9999998, 0, 8.742276e-08, 0, -0.9999998, -0.017144628, -0.81018466, -0.21665907)
+shape = SubResource("CapsuleShape3D_v6fml")
+debug_color = Color(0.46402895, 0.5107383, 0.7982317, 0.41960785)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1977616504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+shape = SubResource("SphereShape3D_3li8b")
+spring_length = 5.6
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=2120834812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8653927, 5.5950465)
+current = true
+
+[node name="GunShot" type="AudioStreamPlayer3D" parent="." unique_id=599512925]
+stream = ExtResource("4_mdl7e")
+volume_db = -20.0
+
+[node name="InventorySwap" type="AudioStreamPlayer3D" parent="." unique_id=1535913733]
+stream = ExtResource("5_qu4a1")
+volume_db = -17.5
+
+[node name="PlayerModel" parent="." unique_id=1335453184 instance=ExtResource("5_70d11")]
+transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 0, -2.4408505, 0)

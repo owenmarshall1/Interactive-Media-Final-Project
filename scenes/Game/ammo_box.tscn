@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bq3vrr43qpayy"]
+
+[ext_resource type="PackedScene" uid="uid://crltn1u8dedw1" path="res://assets/models/items/ammo_box.glb" id="1_sqlwi"]
+[ext_resource type="Script" uid="uid://dbqt8vkk31gyi" path="res://scripts/ammo_box.gd" id="2_87scy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1vt5t"]
+size = Vector3(1.4551392, 1.3178711, 1.3603516)
+
+[node name="ammo_box" unique_id=1858306315 instance=ExtResource("1_sqlwi")]
+script = ExtResource("2_87scy")
+
+[node name="Area3D" type="Area3D" parent="." index="1" unique_id=792862260]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=660542404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0152282715, 0.15893555, -0.0063476563)
+shape = SubResource("BoxShape3D_1vt5t")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

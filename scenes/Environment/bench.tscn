@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cs41qqnco2ijh"]
+
+[ext_resource type="PackedScene" uid="uid://eanjffiu83m4" path="res://assets/models/environment/bench/bench.glb" id="1_qrd32"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fdl3x"]
+size = Vector3(2.9624023, 5.8241577, 9.594757)
+
+[node name="bench" unique_id=1586301907 instance=ExtResource("1_qrd32")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1866534098]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=544023195]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9812012, 2.9969788, 0.34919742)
+shape = SubResource("BoxShape3D_fdl3x")

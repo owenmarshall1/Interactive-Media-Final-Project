@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cjtuuisqjwyob"]
+
+[ext_resource type="PackedScene" uid="uid://by1myqus1q77u" path="res://assets/models/items/FullMoon.glb" id="1_vftpj"]
+[ext_resource type="Script" uid="uid://u14j13avingt" path="res://scripts/moon_charm.gd" id="2_5t2l7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q7rvc"]
+size = Vector3(4.24292, 7.468567, 4.570099)
+
+[node name="Untitled" unique_id=1140689464 instance=ExtResource("1_vftpj")]
+script = ExtResource("2_5t2l7")
+
+[node name="Cylinder" parent="." index="0" unique_id=873193004]
+transform = Transform3D(1, 0, 0, 0, -2.695739e-09, -1, 0, 0.061671317, -4.371139e-08, 0, 0, 1.5)
+
+[node name="Area3D" type="Area3D" parent="." index="1" unique_id=240039721]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=679052395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040161133, -0.60061646, 3.559596)
+shape = SubResource("BoxShape3D_q7rvc")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

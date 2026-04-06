@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bg8whysixwonl"]
+
+[ext_resource type="PackedScene" uid="uid://o1eiuyu5wgx5" path="res://assets/models/items/cigarette_pack.glb" id="1_ca02a"]
+
+[node name="Node3D" type="Node3D" unique_id=55342740]
+
+[node name="cigarette_pack" parent="." unique_id=412636089 instance=ExtResource("1_ca02a")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.18, 2.6)

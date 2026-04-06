@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ckbu1wi528gst"]
+
+[ext_resource type="Shader" uid="uid://be2wqmy7hyoi2" path="res://shaders/ps1_post_process.gdshader" id="1_w76l2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bbpv"]
+shader = ExtResource("1_w76l2")
+
+[node name="Shader" type="CanvasLayer" unique_id=1726313279]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1003036156]
+material = SubResource("ShaderMaterial_0bbpv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

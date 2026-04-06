@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://baqwiukb34kre"]
+
+[ext_resource type="PackedScene" uid="uid://d32dgiy8mmahl" path="res://assets/models/items/Gun/source/PSX_Colt1911.glb" id="1_tdjry"]
+
+[node name="PSX_Colt1911" unique_id=2081273037 instance=ExtResource("1_tdjry")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.015, 0.03, 2.73)

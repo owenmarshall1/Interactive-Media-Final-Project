@@ -1,0 +1,29 @@
+extends Node3D
+
+@export var HUD: CanvasLayer
+@export var player: Node3D
+
+var in_contact := false
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("interact") and in_contact:
+		HUD.messagebox.show_option("Pick up the pack of cigarettes?")
+		HUD.messagebox.confirmed.connect(pickup, CONNECT_ONE_SHOT)
+	
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body == player:
+		in_contact = true
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body == player:
+		in_contact = false
+		
+func pickup(result: bool):
+	if result:
+		HUD.cig_count += 3
+		queue_free()
+	
