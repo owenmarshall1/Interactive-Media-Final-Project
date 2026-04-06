@@ -18,7 +18,7 @@ func _on_start_button_pressed():
 	scene_transistion.play("dissolve")
 	await scene_transistion.animation_finished
 	scene_transistion.play_backwards("dissolve")
-	get_tree().change_scene_to_packed(GRAVEYARD)
+	Engine.get_main_loop().change_scene_to_packed(GRAVEYARD)
 	
 	
 func _on_quit_pressed():

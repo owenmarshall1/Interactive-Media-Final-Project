@@ -65,8 +65,8 @@ uv2_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwnn2"]
 albedo_texture = ExtResource("9_whxyv")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7x5b5"]
-size = Vector3(3.2352295, 4.175415, 233.30933)
+[sub_resource type="BoxShape3D" id="BoxShape3D_dn084"]
+size = Vector3(2.2216187, 3.1271973, 274.67383)
 
 [sub_resource type="Animation" id="Animation_7x5b5"]
 length = 0.001
@@ -1645,9 +1645,9 @@ player = NodePath("../../../../Player")
 
 [node name="Area3D" type="Area3D" parent="NavigationRegion3D/Map/Items/hint_poster" unique_id=2066461796]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Map/Items/hint_poster/Area3D" unique_id=1897099267]
-transform = Transform3D(1.0000839, 1.2193777e-06, 0, 1.3562385e-08, 1.0000181, -5.820766e-11, 1.5422702e-05, 4.196167e-05, 1.0000001, -0.1781311, -0.47414267, -107.96094)
-shape = SubResource("BoxShape3D_7x5b5")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Map/Items/hint_poster/Area3D" unique_id=483672326]
+transform = Transform3D(1.0000268, 3.271707e-07, 0, -7.2614057e-09, 1.0000181, -5.820766e-11, 4.902482e-06, 4.196167e-05, 1.0000001, -0.08950806, -0.98670495, -136.83667)
+shape = SubResource("BoxShape3D_dn084")
 
 [node name="cigarette_pack2" parent="NavigationRegion3D/Map/Items" unique_id=652154818 node_paths=PackedStringArray("HUD", "player") instance=ExtResource("7_0tsb4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.76916, -0.10517925, 109.09917)
@@ -1826,33 +1826,40 @@ parameters/looping = true
 [node name="Enemies" type="Node3D" parent="." unique_id=1642701137]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.041900635, 3.5799255, -0.0012512207)
 
-[node name="Enemy" parent="Enemies" unique_id=1784765703 instance=ExtResource("4_mskxn")]
+[node name="Enemy" parent="Enemies" unique_id=1784765703 node_paths=PackedStringArray("game_manager") instance=ExtResource("4_mskxn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.28413, -2.5605602, 76.175224)
 player_path = NodePath("../../Player")
+game_manager = NodePath("../..")
 
-[node name="Enemy2" parent="Enemies" unique_id=1988293381 instance=ExtResource("4_mskxn")]
+[node name="Enemy2" parent="Enemies" unique_id=1988293381 node_paths=PackedStringArray("game_manager") instance=ExtResource("4_mskxn")]
 transform = Transform3D(-0.4388573, 0, 0.89855677, 0, 1, 0, -0.89855677, 0, -0.4388573, -28.088398, -2.8932226, 27.62683)
 player_path = NodePath("../../Player")
+game_manager = NodePath("../..")
 
-[node name="Enemy3" parent="Enemies" unique_id=1225746632 instance=ExtResource("4_mskxn")]
+[node name="Enemy3" parent="Enemies" unique_id=1225746632 node_paths=PackedStringArray("game_manager") instance=ExtResource("4_mskxn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.81859, -2.951254, 30.668673)
 player_path = NodePath("../../Player")
+game_manager = NodePath("../..")
 
-[node name="Enemy4" parent="Enemies" unique_id=1119165017 instance=ExtResource("4_mskxn")]
+[node name="Enemy4" parent="Enemies" unique_id=1119165017 node_paths=PackedStringArray("game_manager") instance=ExtResource("4_mskxn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.248634, -2.887682, 55.77597)
 player_path = NodePath("../../Player")
+game_manager = NodePath("../..")
 
-[node name="Enemy5" parent="Enemies" unique_id=1571453756 instance=ExtResource("4_mskxn")]
+[node name="Enemy5" parent="Enemies" unique_id=1571453756 node_paths=PackedStringArray("game_manager") instance=ExtResource("4_mskxn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.05092, -2.9028163, 47.389732)
 player_path = NodePath("../../Player")
+game_manager = NodePath("../..")
 
-[node name="Enemy6" parent="Enemies" unique_id=1275467135 instance=ExtResource("4_mskxn")]
+[node name="Enemy6" parent="Enemies" unique_id=1275467135 node_paths=PackedStringArray("game_manager") instance=ExtResource("4_mskxn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112.17735, -2.9060953, 47.936943)
 player_path = NodePath("../../Player")
+game_manager = NodePath("../..")
 
-[node name="Enemy7" parent="Enemies" unique_id=589425752 instance=ExtResource("4_mskxn")]
+[node name="Enemy7" parent="Enemies" unique_id=589425752 node_paths=PackedStringArray("game_manager") instance=ExtResource("4_mskxn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.68086, -2.5605602, 104.783516)
 player_path = NodePath("../../Player")
+game_manager = NodePath("../..")
 
 [node name="enemyspawns" type="Node3D" parent="Enemies" unique_id=1459218584]
 

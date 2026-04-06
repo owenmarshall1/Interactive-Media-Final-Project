@@ -26,6 +26,8 @@ var camera_rotation := 0.0
 
 var can_move := true
 var can_shoot := false
+var invincible := false
+var dead := false
 var is_aiming := false
 var is_playing_oneshot := false
 
@@ -93,6 +95,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func take_damage(amount: float) -> void:
+	if invincible: return
 	HUD.take_damage(amount)
 	
 func shoot():
@@ -186,6 +189,7 @@ func handle_footsteps(delta):
 		footstep_timer = 0
 		
 func die():
+	dead = true
 	can_move = false
 	can_shoot = false
 	is_playing_oneshot = true
@@ -193,6 +197,9 @@ func die():
 	var animation_player = player_model.get_node("AnimationPlayer")
 	animation_player.play("Death")
 	await animation_player.animation_finished
+	GameState.reset()
+	Inventory.items.clear()
+	Inventory.selected_index = 0
 	$AnimationPlayer/ColorRect.visible = true
 	$AnimationPlayer.play("deathfade")
 	await $AnimationPlayer.animation_finished

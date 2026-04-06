@@ -29,7 +29,10 @@ func _on_return_pressed() -> void:
 	pause_menu.visible = false
 	scene_transistion.play("dissolve")
 	await scene_transistion.animation_finished
-	await get_tree().process_frame  
+	await get_tree().process_frame
+	GameState.reset()
+	Inventory.items.clear()
+	Inventory.selected_index = 0
 	get_tree().change_scene_to_file("res://scenes/Main_menu.tscn")
 
 

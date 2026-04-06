@@ -27,12 +27,11 @@ var spawned_enemies := []
 	]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if click_count >= 1 and not church_unlocked:
+	if click_count >= 3 and not church_unlocked:
 		HUD.messagebox.show_message("You hear something unlock.")
 		church_unlocked = true
 		church_cutscene()
@@ -42,13 +41,14 @@ func _process(_delta: float) -> void:
 		GameState.cig_count = HUD.cig_count
 		GameState.cig_time = HUD.cig_time
 		for enemy in spawned_enemies:
-			queue_free()
+			enemy.queue_free()
 		get_tree().change_scene_to_file("res://scenes/Environment/Church.tscn")
 
 
 func _on_first_cutscene_trigger_body_entered(body: Node3D) -> void:
 	if body == player:
 		if first_cutscene_activated: return
+		cutscene = true
 		first_cutscene_activated = true
 		player.can_move = false
 		player.velocity = Vector3.ZERO
@@ -59,9 +59,10 @@ func _on_first_cutscene_trigger_body_entered(body: Node3D) -> void:
 		$FirstCutscene/Camera2.current = true
 		
 		$FirstCutscene/ColorRect.visible = false
+		cutscene = false
 		
 func church_cutscene():
-	
+	player.invincible = true
 	player.can_move = false
 	player.velocity = Vector3.ZERO
 	while HUD.messagebox.is_showing:
@@ -73,11 +74,11 @@ func church_cutscene():
 	$ChurchBellCutscene/Camera3D2.current = true
 	await get_tree().create_timer(5.5).timeout
 	$ChurchBellCutscene/Camera3D3.current = true
-	
 
 	for point in enemy_spawn_points:
 		var enemy = enemy_scene.instantiate()
 		enemy.player = $Player
+		enemy.game_manager = self
 		enemy.cutscene_mode = true
 		get_parent().add_child(enemy)
 		enemy.global_position = point.global_position
@@ -88,10 +89,13 @@ func church_cutscene():
 	for enemy in spawned_enemies:
 		if is_instance_valid(enemy):
 			enemy.cutscene_mode = false
-			
+	for enemy in get_tree().get_nodes_in_group("Enemies"):
+		enemy.cutscene_mode = false
 	$ChurchBellCutscene/ColorRect.visible = false
 	player.can_move = true
 	player.get_node("SpringArm3D/Camera3D").current = true
+	await get_tree().create_timer(1).timeout
+	player.invincible = false
 	
 
 

@@ -28,6 +28,7 @@ func _ready():
 	cig_count = GameState.cig_count
 	cig_time = GameState.cig_time
 func _process(delta):
+	if player.dead == true: return
 	var selected_item = Inventory.get_selected()
 	if Inventory.interaction_locked:
 		return

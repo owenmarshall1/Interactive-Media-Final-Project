@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
-const SPEED = 6.5
+const SPEED = 5.5
 const ATTACK_DAMAGE = 10.0
 const ATTACK_RANGE = 4.0
-const ATTACK_COOLDOWN = 1.5
+const ATTACK_COOLDOWN = 1.6
 
 var cutscene_mode = false
 var player: Node = null
@@ -17,6 +17,7 @@ var lunging := false
 var is_screaming := false
 
 @export var player_path: NodePath
+@export var game_manager: Node
 @onready var nav_agent = $NavigationAgent3D
 @onready var detection_area = $DetectionArea
 @onready var anim_player = $EnemyModel/AnimationPlayer
@@ -56,7 +57,7 @@ func _physics_process(_delta: float) -> void:
 	if not is_instance_valid(player): return
 	var dist = global_position.distance_to(player.global_position)
 
-	if dist <= ATTACK_RANGE and can_attack:
+	if dist <= ATTACK_RANGE and can_attack and !cutscene_mode:
 		attack()
 	elif player_in_range:
 		# Chase the player
@@ -87,6 +88,7 @@ func _die() -> void:
 	$CollisionShape3D.disabled = true
 
 func attack() -> void:
+	if cutscene_mode: return
 	can_attack = false
 	attacking = true
 	anim_player.play("Attack", -1 , 1.5)

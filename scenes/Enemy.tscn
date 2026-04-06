@@ -11,7 +11,7 @@ radius = 0.6821289
 height = 3.3292847
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_55jtl"]
-radius = 20.0
+radius = 18.0
 
 [node name="Enemy" type="CharacterBody3D" unique_id=1988293381]
 script = ExtResource("1_55jtl")

@@ -18,7 +18,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and in_contact_poster:
+	var dist = player.global_position.distance_to(global_position)
+	if Input.is_action_just_pressed("interact") and dist <= 3:
 		if not is_open:
 			# OPEN
 			page_sound.play()
@@ -34,9 +35,11 @@ func _process(_delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body == player:
+		print("entered")
 		in_contact_poster = true
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body == player:
 		in_contact_poster = false
+		print("exited")
