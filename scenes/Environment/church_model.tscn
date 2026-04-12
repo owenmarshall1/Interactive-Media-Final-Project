@@ -21,21 +21,27 @@ albedo_texture = ExtResource("2_uqi0s")
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6ona"]
 size = Vector3(4.994751, 9.265991, 1.8905029)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_uqi0s"]
+size = Vector3(11.515526, 22.695435, 62.640503)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_btuqu"]
+size = Vector3(28.994385, 17.11023, 49.616455)
+
 [node name="church" unique_id=1613990840 instance=ExtResource("1_i6ona")]
 
-[node name="Cube_008" parent="." index="0" unique_id=2057779896]
+[node name="Cube_008" parent="." index="0" unique_id=113269093]
 material_override = SubResource("StandardMaterial3D_fq7my")
 
-[node name="Cube_009" parent="." index="1" unique_id=1143418061]
+[node name="Cube_009" parent="." index="1" unique_id=1295540963]
 material_override = SubResource("StandardMaterial3D_3gwyv")
 
-[node name="Cube_018" parent="." index="2" unique_id=278240570]
+[node name="Cube_018" parent="." index="2" unique_id=1813579440]
 material_override = SubResource("StandardMaterial3D_6spei")
 
-[node name="Cube_019" parent="." index="3" unique_id=637552439]
+[node name="Cube_019" parent="." index="3" unique_id=343595827]
 material_override = SubResource("StandardMaterial3D_bste4")
 
-[node name="Plane_004" parent="." index="4" unique_id=1861150610]
+[node name="Plane_004" parent="." index="4" unique_id=1115504568]
 material_override = SubResource("StandardMaterial3D_jf7o8")
 
 [node name="Area3D" type="Area3D" parent="." index="5" unique_id=2035205386]
@@ -43,3 +49,13 @@ material_override = SubResource("StandardMaterial3D_jf7o8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=927911723]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15264893, -0.8777466, -3.1587007)
 shape = SubResource("BoxShape3D_i6ona")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="6" unique_id=470014909]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=2085790306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18255234, 5.8444858, -34.431145)
+shape = SubResource("BoxShape3D_uqi0s")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=10238027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6864014, 3.0961304, -33.534184)
+shape = SubResource("BoxShape3D_btuqu")

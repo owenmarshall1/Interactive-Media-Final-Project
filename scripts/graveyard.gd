@@ -32,7 +32,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if click_count >= 3 and not church_unlocked:
-		HUD.messagebox.show_message("You hear something unlock.")
+		HUD.messagebox.show_message("You hear the church door unlock.")
 		church_unlocked = true
 		church_cutscene()
 		
@@ -72,7 +72,7 @@ func church_cutscene():
 	$ChurchBellCutscene/ColorRect.visible = true
 	await get_tree().create_timer(4.5).timeout
 	$ChurchBellCutscene/Camera3D2.current = true
-	await get_tree().create_timer(5.5).timeout
+	await get_tree().create_timer(4.5).timeout
 	$ChurchBellCutscene/Camera3D3.current = true
 
 	for point in enemy_spawn_points:
@@ -85,7 +85,7 @@ func church_cutscene():
 		enemy._trigger_scream()
 		spawned_enemies.append(enemy)
 		
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(2).timeout
 	for enemy in spawned_enemies:
 		if is_instance_valid(enemy):
 			enemy.cutscene_mode = false

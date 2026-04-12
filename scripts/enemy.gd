@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 5.5
+const SPEED = 4.8
 const ATTACK_DAMAGE = 10.0
 const ATTACK_RANGE = 4.0
 const ATTACK_COOLDOWN = 1.6

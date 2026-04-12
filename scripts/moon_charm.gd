@@ -12,11 +12,12 @@ var in_contact = false
 
 var enemy_spawn_points: Array[Node3D] = []
 func _ready() -> void:
-	enemy_spawn_points= [
-		$"../../Altars/Altar_fake/EnemySpawn1",
-		$"../../Altars/Altar_fake/EnemySpawn2",
-		$"../../Altars/Altar_fake/EnemySpawn3"
-	]
+	if charm_id == "gibbous":
+		enemy_spawn_points= [
+			$"../../Altars/Altar_fake/EnemySpawn1",
+			$"../../Altars/Altar_fake/EnemySpawn2",
+			$"../../Altars/Altar_fake/EnemySpawn3"
+		]
 func _process(_delta):
 	if Input.is_action_just_pressed("interact") and in_contact:
 		HUD.messagebox.show_option("Pick up the moon charm?")

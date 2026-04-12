@@ -36,6 +36,7 @@ func _ready():
 	ammo = GameState.ammo
 
 func _physics_process(delta):
+	if dead: return
 	if Inventory.get_selected().id == "gun":
 		$PlayerModel/Armature/Skeleton3D/BoneAttachment3D/PSX_Colt1911.visible = true	
 	else:
@@ -204,4 +205,5 @@ func die():
 	$AnimationPlayer.play("deathfade")
 	await $AnimationPlayer.animation_finished
 	$AnimationPlayer/ColorRect.visible = false
+	dead = false
 	Engine.get_main_loop().change_scene_to_file("res://scenes/Main_menu.tscn")

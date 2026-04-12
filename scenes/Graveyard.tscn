@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://bv15rfie2auvg" path="res://assets/sounds/paper_interact.mp3" id="15_7x5b5"]
 [ext_resource type="PackedScene" uid="uid://ccwdksq8oda7g" path="res://scenes/Environment/church_model.tscn" id="17_2dajg"]
 [ext_resource type="AudioStream" uid="uid://bryusle7om2h0" path="res://assets/sounds/bellsringing.mp3" id="18_dn084"]
+[ext_resource type="PackedScene" uid="uid://dshn1wuvmp0yx" path="res://assets/models/environment/deer/deer_dead_body.glb" id="19_jwwb4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q6ro2"]
 sky_top_color = Color(0.058672562, 7.314069e-05, 0.14562559, 1)
@@ -1625,7 +1626,7 @@ HUD = NodePath("../../../../HUD")
 item_scene = ExtResource("11_i47lc")
 
 [node name="ammo_box2" parent="NavigationRegion3D/Map/Items" unique_id=1592040385 node_paths=PackedStringArray("player", "HUD") instance=ExtResource("12_10d04")]
-transform = Transform3D(0.9046486, 0, -0.42615825, 0, 1, 0, 0.42615825, 0, 0.9046486, -67.77987, 0.09644414, 35.012535)
+transform = Transform3D(0.9046486, 0, -0.42615825, 0, 1, 0, 0.42615825, 0, 0.9046486, -69.65041, 0.0964439, 32.570576)
 player = NodePath("../../../../Player")
 HUD = NodePath("../../../../HUD")
 item_scene = ExtResource("11_i47lc")
@@ -1908,7 +1909,7 @@ shape = SubResource("BoxShape3D_jwwb4")
 transform = Transform3D(-0.5620832, 0.41354036, 0.71627283, 0, 0.8660254, -0.50000006, -0.8270805, -0.28104168, -0.4867784, -7.46053, 4.3672333, 18.792551)
 
 [node name="Camera2" type="Camera3D" parent="FirstCutscene" unique_id=881520071]
-transform = Transform3D(-0.35020742, -0.23294091, 0.90724444, 0, 0.96858317, 0.24868979, -0.93667215, 0.08709305, -0.33920485, -18.423502, 2.4148884, 25.073643)
+transform = Transform3D(-0.35020742, -0.23294091, 0.9072444, 0, 0.96858317, 0.24868977, -0.93667215, 0.08709305, -0.33920482, -18.423502, 2.4148884, 25.073643)
 
 [node name="ColorRect" type="ColorRect" parent="FirstCutscene" unique_id=924248518]
 visible = false
@@ -1926,8 +1927,8 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -93.
 [node name="church" parent="." unique_id=1613990840 instance=ExtResource("17_2dajg")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -91.337524, 4.9795055, 73.55494)
 
-[node name="Plane_004" parent="church" index="4" unique_id=1861150610]
-transform = Transform3D(0.50091386, 0.04704157, -2.2846829e-05, -0.04704151, 0.5009128, -0.0010710494, -7.739649e-05, 0.0010684936, 0.50311685, -2.2888184e-05, 45, -54)
+[node name="Plane_004" parent="church" index="4" unique_id=1115504568]
+transform = Transform3D(0.5009138, 0.047041565, -2.2846829e-05, -0.0470415, 0.5009127, -0.0010710494, -7.7396486e-05, 0.0010684935, 0.50311685, -2.2888184e-05, 45, -54)
 
 [node name="ChurchBellCutscene" type="Node3D" parent="." unique_id=1594082772]
 
@@ -1955,6 +1956,9 @@ transform = Transform3D(-0.8461929, 0.07416206, 0.5276905, 0, 0.99026805, -0.139
 [node name="Camera3D3" type="Camera3D" parent="ChurchBellCutscene" unique_id=1448002337]
 transform = Transform3D(1, 0, 0, 0, 0.9186603, 0.3950486, 0, -0.3950486, 0.9186603, -108, 7.907937, 38.276)
 fov = 101.8607
+
+[node name="Deer" parent="." unique_id=761456346 instance=ExtResource("19_jwwb4")]
+transform = Transform3D(-1.8139116, 0, -0.84245163, 0, 2, 0, 0.84245163, 0, -1.8139116, -25.753946, 0.06353909, 27.322243)
 
 [connection signal="body_entered" from="NavigationRegion3D/Map/Items/hint_poster/Area3D" to="NavigationRegion3D/Map/Items/hint_poster" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="NavigationRegion3D/Map/Items/hint_poster/Area3D" to="NavigationRegion3D/Map/Items/hint_poster" method="_on_area_3d_body_exited"]

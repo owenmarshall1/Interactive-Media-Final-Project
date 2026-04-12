@@ -27,7 +27,7 @@ shape = SubResource("SphereShape3D_55jtl")
 
 [node name="Enemy" parent="." unique_id=1104483112 instance=ExtResource("2_y27c4")]
 
-[node name="Skeleton3D" parent="Enemy/Armature" parent_id_path=PackedInt32Array(1104483112, 534844127) index="0" unique_id=1533695731]
+[node name="Skeleton3D" parent="Enemy/Armature" parent_id_path=PackedInt32Array(1104483112, 1717050112) index="0" unique_id=382386553]
 bones/0/position = Vector3(4.769179, -23.621464, -390.2516)
 bones/0/rotation = Quaternion(-0.6220338, -0.13021049, 0.10328627, 0.7651479)
 bones/1/position = Vector3(-9.536743e-07, 38.392853, -0.19970365)
