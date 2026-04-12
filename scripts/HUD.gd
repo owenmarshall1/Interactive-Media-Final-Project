@@ -52,12 +52,10 @@ func _process(delta):
 		ammo_count.visible = false
 	
 	if cig_time > 0:
-		#smoke.emitting = true
 		burn_tip.visible = true
 		cig_is_empty = false
 		
 	else:
-		#smoke.emitting = false
 		smoke.visible = false
 		burn_tip.visible = false
 		
