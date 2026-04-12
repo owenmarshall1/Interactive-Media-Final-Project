@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://dresu3dtr646l"]
 
 [ext_resource type="Texture2D" uid="uid://bncb5crnden6c" path="res://assets/textures/moon_surface.webp" id="1_paex3"]
+[ext_resource type="Script" uid="uid://cxn22kb88uplu" path="res://scenes/Environment/moon.gd" id="1_ramur"]
 [ext_resource type="PackedScene" uid="uid://b1g6316yxjmga" path="res://scenes/Player.tscn" id="2_c3pl7"]
 [ext_resource type="PackedScene" uid="uid://cvm6d1gjjooyj" path="res://scenes/Game/HUD.tscn" id="3_c3pl7"]
+[ext_resource type="PackedScene" uid="uid://m3hxd2bwr0c8" path="res://scenes/Enemy.tscn" id="5_ramur"]
+[ext_resource type="PackedScene" uid="uid://bq3vrr43qpayy" path="res://scenes/Game/ammo_box.tscn" id="6_ajfjv"]
+[ext_resource type="PackedScene" uid="uid://smdnovyepq4q" path="res://scenes/Game/InventoryAmmo.tscn" id="7_nyh70"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4leel"]
 albedo_texture = ExtResource("1_paex3")
@@ -10,7 +14,7 @@ uv1_scale = Vector3(100, 100, 100)
 uv1_offset = Vector3(4, 0, 0)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_paex3"]
-sky_top_color = Color(0, 0, 0, 1)
+sky_top_color = Color(0.30323282, 0.30323282, 0.30323282, 1)
 sky_horizon_color = Color(0, 0, 0, 1)
 sky_curve = 0.08615198
 sky_energy_multiplier = 1.62
@@ -32,6 +36,7 @@ volumetric_fog_density = 0.07
 volumetric_fog_sky_affect = 0.75
 
 [node name="Moon" type="Node3D" unique_id=711309758]
+script = ExtResource("1_ramur")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1397176740]
 transform = Transform3D(1000, 0, 0, 0, 0.1, 0, 0, 0, 1000, -0.7687216, -231.08948, -0.5358238)
@@ -50,3 +55,13 @@ transform = Transform3D(-0.47252, -0.88131994, 0, 0.037674256, -0.020199066, 0.9
 
 [node name="HUD" parent="." unique_id=675890851 node_paths=PackedStringArray("player") instance=ExtResource("3_c3pl7")]
 player = NodePath("../Player")
+
+[node name="MoonLord" parent="." unique_id=1988293381 instance=ExtResource("5_ramur")]
+transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 28.686615, -522.5972, -247.89603)
+moon = true
+
+[node name="ammo_box" parent="." unique_id=1858306315 node_paths=PackedStringArray("player", "HUD") instance=ExtResource("6_ajfjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.633525, 0.7748213, 1.3609962)
+player = NodePath("../Player")
+HUD = NodePath("../HUD")
+item_scene = ExtResource("7_nyh70")

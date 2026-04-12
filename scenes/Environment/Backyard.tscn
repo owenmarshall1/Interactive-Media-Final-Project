@@ -1472,6 +1472,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.855408, -2.3458972, 25.61
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.91636, 1.3159683, 88.69055)
 player_path = NodePath("../../Player")
 
+[node name="Enemy2" parent="Enemies" unique_id=1348287934 instance=ExtResource("12_lc5yc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.06654, 1.3159683, 125.166504)
+player_path = NodePath("../../Player")
+
+[node name="Enemy3" parent="Enemies" unique_id=479775875 instance=ExtResource("12_lc5yc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.25985, 1.3159683, 135.03911)
+player_path = NodePath("../../Player")
+
 [node name="Cave" type="Node3D" parent="." unique_id=2001004751]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Cave" unique_id=1043321408]

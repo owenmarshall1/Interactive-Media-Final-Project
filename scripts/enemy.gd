@@ -18,6 +18,7 @@ var is_screaming := false
 
 @export var player_path: NodePath
 @export var game_manager: Node
+@export var moon: bool
 @onready var nav_agent = $NavigationAgent3D
 @onready var detection_area = $DetectionArea
 @onready var anim_player = $EnemyModel/AnimationPlayer
@@ -117,7 +118,7 @@ func attack() -> void:
 
 func take_damage(damage: float) -> void:
 	health -= damage
-	if !player_detected and !is_screaming:
+	if !player_detected and !is_screaming and !moon:
 		_trigger_scream()
 	if health <= 0 and !dead:
 		_die()
